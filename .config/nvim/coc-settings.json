@@ -1,0 +1,16 @@
+{
+	"npm.binPath": "pnpm",
+	"coc.preferences.formatOnSaveFiletypes": ["ts", "tsx", "jsx", "js", "css", "scss", "less", "go"],
+	"coc.preferences.formatOnTypeFiletypes": ["ts", "tsx", "jsx", "js", "css", "scss", "less", "go"],
+  "coc.preferences.enableMessageDialog": true,
+	"prettier.printWidth": 100,
+	"suggest.noselect": false,
+	"explorer.icon.enableNerdfont": true,
+	"explorer.git.enable": true,
+	"explorer.file.git.showUntrackedFiles": true,
+	"explorer.mouseMode": "singleclick",
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+  "git.addGBlameToVirtualText": true
+}
