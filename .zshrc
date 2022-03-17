@@ -125,6 +125,8 @@ alias with-env="env \$(cat .env) "
 alias charles="export HTTPS_PROXY=http://127.0.0.1:8888 && export HTTP_PROXY=http://127.0.0.1:8888"
 alias mh="cd ~/miaohui"
 alias start-id="APP_ENV=dev APP_ORG="5dbba1e31fd96208db5a00a1" go run ~/miaohui/identity-service/app/server.go"
+alias town="git-town"
+alias dateNum="date +%y%m%d"
 
 export PATH="/Users/mac/go/bin:$PATH"
 export PATH="/usr/local/share/android-commandlinetools/platform-tools:$PATH"
