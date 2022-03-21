@@ -48,7 +48,7 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   #decorations: full
-  decorations: buttonless
+  decorations: transparent
 
   # Startup Mode (changes require restart)
   #
@@ -59,7 +59,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: SimpleFullscreen
+  startup_mode: Fullscreen
   # Window title
   title: Alacritty
 
@@ -81,7 +81,7 @@ scrolling:
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
-  multiplier: 3
+  multiplier: 4
 
   # Scroll to the bottom when new text is written to the terminal.
   auto_scroll: false

@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 ALL_PROXY=socks5://127.0.0.1:7890
 export NO_PROXY=127.0.0.1,localhost,::1
 alias unbrew="brew uninstall"
 alias reload="source ~/.zshrc"
@@ -122,11 +122,13 @@ export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
 alias base="docker-compose -f ~/juzi-work-deploy/dev/base/docker-compose.yml"
 alias with-env="env \$(cat .env) "
 
-alias charles="export HTTPS_PROXY=http://127.0.0.1:8888 && export HTTP_PROXY=http://127.0.0.1:8888"
+alias charles="export HTTPS_PROXY=http://127.0.0.1:8888 && export HTTP_PROXY=http://127.0.0.1:8888 ALL_PROXY=socks5://127.0.0.1:7890"
 alias mh="cd ~/miaohui"
 alias start-id="APP_ENV=dev APP_ORG="5dbba1e31fd96208db5a00a1" go run ~/miaohui/identity-service/app/server.go"
 alias town="git-town"
 alias dateNum="date +%y%m%d"
+
+alias timeDisp="date +%a\ %m-%d\ %T"
 
 export PATH="/Users/mac/go/bin:$PATH"
 export PATH="/usr/local/share/android-commandlinetools/platform-tools:$PATH"
@@ -136,3 +138,4 @@ export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 
 # Fig post block. Keep at the bottom of this file.
 eval "$(fig init zsh post)"
+

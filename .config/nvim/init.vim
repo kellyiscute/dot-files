@@ -151,6 +151,14 @@ Plug 'uarun/vim-protobuf'
 
 call plug#end()
 
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+let g:vimspector_enable_mappings = 'HUMAN'
+
+" packadd! vimspector
+
 " todo-comments config
 
 lua << EOF
