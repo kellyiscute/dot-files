@@ -36,9 +36,18 @@ hi TodoFgHACK ctermfg=White
 hi TodoBgWARN ctermbg=Yellow 
 hi TodoSignWARN cterm=BOLD
 
-" slow mouse wheel
-map <ScrollWheelUp> <C-Y>
-map <ScrollWheelDown> <C-E>
+" find by cursor position
+vnoremap \ "vy/<C-r>v
+
+" CamelCaseMotion
+map <silent> iw <Plug>CamelCaseMotion_w
+map <silent> ib <Plug>CamelCaseMotion_b
+
+" write
+map <silent> <leader>w :w<CR>
+
+" reload
+command Reload source ~/.config/nvim/init.vim
 
 nnoremap <SPACE> <Nop>
 let g:mapleader = ' '
@@ -55,7 +64,7 @@ autocmd User AirlineAfterInit call AirlineInit()
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd :call CocActionAsync('jumpDefinition', 'vsplit')
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -150,6 +159,9 @@ Plug 'iamcco/coc-diagnostic'
 Plug 'wakatime/vim-wakatime'
 Plug 'Yggdroot/indentLine'
 Plug 'uarun/vim-protobuf'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'bkad/CamelCaseMotion'
+Plug 'brooth/far.vim'
 
 call plug#end()
 
