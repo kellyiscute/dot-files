@@ -130,6 +130,8 @@ nnoremap <silent> [fzf-p]t     :<C-u>CocCommand fzf-preview.BufferTags<CR>
 nnoremap <silent> [fzf-p]q     :<C-u>CocCommand fzf-preview.QuickFix<CR>
 nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
 
+nnoremap <silent> <leader>fmt :<C-u>CocCommand prettier.formatFile<CR>
+
 call plug#begin()
 
 Plug 'tpope/vim-surround'
