@@ -40,8 +40,8 @@ hi TodoSignWARN cterm=BOLD
 vnoremap \ "vy/<C-r>v
 
 " CamelCaseMotion
-map <silent> iw <Plug>CamelCaseMotion_w
-map <silent> ib <Plug>CamelCaseMotion_b
+map <silent> <leader>w <Plug>CamelCaseMotion_w
+map <silent> <leader>b <Plug>CamelCaseMotion_b
 
 " write
 map <silent> <leader>w :w<CR>
@@ -162,6 +162,7 @@ Plug 'uarun/vim-protobuf'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'bkad/CamelCaseMotion'
 Plug 'brooth/far.vim'
+Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
 
