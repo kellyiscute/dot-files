@@ -64,7 +64,8 @@ autocmd User AirlineAfterInit call AirlineInit()
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " GoTo code navigation.
-nmap <silent> gd :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
+nmap <silent> gds :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
+nmap <silent> gdd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
