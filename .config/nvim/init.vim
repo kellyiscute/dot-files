@@ -48,6 +48,8 @@ map <silent> <leader>w :w<CR>
 
 " reload
 command Reload source ~/.config/nvim/init.vim
+map 0 $
+map 1 ^
 
 nnoremap <SPACE> <Nop>
 let g:mapleader = ' '
