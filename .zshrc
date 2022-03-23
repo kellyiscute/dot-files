@@ -127,6 +127,7 @@ alias mh="cd ~/miaohui"
 alias start-id="APP_ENV=dev APP_ORG="5dbba1e31fd96208db5a00a1" go run ~/miaohui/identity-service/app/server.go"
 alias town="git-town"
 alias dateNum="date +%y%m%d"
+alias dotui="(cd $HOME/.local/share/yadm/repo.git; gitui)"
 
 alias timeDisp="date +%a\ %m-%d\ %T"
 

@@ -1,0 +1,12 @@
+==> Formulae
+awscli                  fzf                     gmp                     libassuan               libnghttp2              luajit-openresty        nettle                  pinentry                ripgrep                 unbound
+bdw-gc                  gdbm                    gnupg                   libevent                libtasn1                luv                     npth                    pkg-config              rustup-init             unibilium
+brotli                  gettext                 gnutls                  libffi                  libtermkey              m4                      nvm                     protobuf                six                     utf8proc
+c-ares                  gh                      go                      libgcrypt               libtool                 mpdecimal               openjdk@11              python@3.10             sqlite                  watch
+ca-certificates         git-town                go@1.16                 libgpg-error            libunistring            msgpack                 openssl@1.1             python@3.9              thefuck                 wget
+cmake                   gitui                   guile                   libidn2                 libusb                  ncurses                 p11-kit                 readline                tmux                    xz
+docker-compose          glab                    icu4c                   libksba                 libuv                   neovim                  pcre2                   redis                   tree-sitter             yadm
+
+==> Casks
+alacritty                       bloomrpc                        fig                             flutter                         ngrok                           proxyman                        sublime-text
+android-commandlinetools        docker                          figma                           font-fira-code-nerd-font        postman                         snipaste                        tableplus
