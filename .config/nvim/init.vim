@@ -36,23 +36,26 @@ hi TodoFgHACK ctermfg=White
 hi TodoBgWARN ctermbg=Yellow 
 hi TodoSignWARN cterm=BOLD
 
+nnoremap <SPACE> <Nop>
+let g:mapleader = ' '
+
+" naming convention switching
+let g:camelsnek_i_am_an_old_fart_with_no_sense_of_humour_or_internet_culture = 0
+let g:camelsnek_alternative_camel_commands = 1
+
 " find by cursor position
-vnoremap \ "vy/<C-r>v
+vnoremap \\ "vy/<C-r>v<CR>
 
 " CamelCaseMotion
-map <silent> <leader>w <Plug>CamelCaseMotion_w
-map <silent> <leader>b <Plug>CamelCaseMotion_b
+let g:camelcasemotion_key = '<leader>'
 
 " write
 map <silent> <leader>w :w<CR>
 
 " reload
 command Reload source ~/.config/nvim/init.vim
-map 0 $
-map 1 ^
+map <leader>1 $
 
-nnoremap <SPACE> <Nop>
-let g:mapleader = ' '
 let g:floaterm_keymap_toggle = '<F12>'
 
 " let g:airline_section_b = '%{strftime("%H:%M")}'
@@ -166,6 +169,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'bkad/CamelCaseMotion'
 Plug 'brooth/far.vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'nicwest/vim-camelsnek'
 
 call plug#end()
 

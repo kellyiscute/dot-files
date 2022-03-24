@@ -15,5 +15,13 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "git.addGBlameToVirtualText": true,
   "prettier.enable": true,
-  "typescript.format.enabled": false
+  "typescript.format.enabled": false,
+  "cSpell.userWords": [
+    "MIAOHUI",
+    "camelsnek",
+    "juzi",
+    "juzibot",
+    "protobuf",
+    "wrapperspb"
+  ]
 }
