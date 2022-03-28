@@ -47,7 +47,7 @@ let g:camelsnek_alternative_camel_commands = 1
 vnoremap \\ "vy/<C-r>v<CR>
 
 " CamelCaseMotion
-let g:camelcasemotion_key = '<leader>'
+let g:camelcasemotion_key = '\'
 
 " write
 map <silent> <leader>w :w<CR>
