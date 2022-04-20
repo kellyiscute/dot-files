@@ -1,7 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-export PATH="${PATH}:${HOME}/.local/bin"
-eval "$(fig init zsh pre)"
-
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -120,7 +118,7 @@ alias gl_create_repo="git push --set-upstream git@gitlab.juzibot.com:guo40020/\$
 export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
 
 alias base="docker-compose -f ~/juzi-work-deploy/dev/base/docker-compose.yml"
-alias with-env="env \$(cat .env) "
+alias with-env="env \$(cat ./.env) "
 
 alias charles="export HTTPS_PROXY=http://127.0.0.1:8888 && export HTTP_PROXY=http://127.0.0.1:8888 ALL_PROXY=socks5://127.0.0.1:7890"
 alias mh="cd ~/miaohui"
@@ -138,5 +136,4 @@ export VISUAL="nvim"
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 
 # Fig post block. Keep at the bottom of this file.
-eval "$(fig init zsh post)"
-
+. "$HOME/.fig/shell/zshrc.post.zsh"

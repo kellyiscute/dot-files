@@ -36,6 +36,8 @@ hi TodoFgHACK ctermfg=White
 hi TodoBgWARN ctermbg=Yellow 
 hi TodoSignWARN cterm=BOLD
 
+let g:localvimrc_ask=0
+
 nnoremap <SPACE> <Nop>
 let g:mapleader = ' '
 
@@ -170,6 +172,7 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'brooth/far.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'nicwest/vim-camelsnek'
+Plug 'mfussenegger/nvim-dap'
 
 call plug#end()
 

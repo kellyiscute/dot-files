@@ -17,12 +17,20 @@
   "prettier.enable": true,
   "typescript.format.enabled": false,
   "cSpell.userWords": [
+    "Feishu",
     "MIAOHUI",
+    "WXWORK",
+    "Wxid",
     "camelsnek",
+    "gonanoid",
+    "grpc",
     "juzi",
     "juzibot",
     "nestjs",
     "protobuf",
+    "qmgo",
+    "unmarshalling",
+    "wechaty",
     "wrapperspb"
   ]
 }
