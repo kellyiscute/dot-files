@@ -59,6 +59,9 @@ command Reload source ~/.config/nvim/init.vim
 map <leader>1 $
 
 let g:floaterm_keymap_toggle = '<F12>'
+nnoremap <silent> <C-F11> :FloatermNew<CR>
+nnoremap <silent> <C-F10> :FloatermNext<CR>
+nnoremap <silent> <C-F9> :FloatermPrev<CR>
 
 " let g:airline_section_b = '%{strftime("%H:%M")}'
 let g:airline#extensions#coc#enabled = 1
@@ -173,6 +176,7 @@ Plug 'brooth/far.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'nicwest/vim-camelsnek'
 Plug 'mfussenegger/nvim-dap'
+Plug '~/Documents/vim_dap_helper'
 
 call plug#end()
 
@@ -182,9 +186,28 @@ nmap <Leader>di <Plug>VimspectorBalloonEval
 xmap <Leader>di <Plug>VimspectorBalloonEval
 let g:vimspector_enable_mappings = 'HUMAN'
 
-" packadd! vimspector
-
 " todo-comments config
+
+" ========dap configurations
+" dap-golang
+lua << EOF
+  local dap = require('dap')
+  dap.adapters.go = {
+    type = 'executable';
+    command = 'node';
+    args = {vim.fn.expand('~/dap/vscode-go/dist/debugAdapter.js')};
+  }
+  dap.configurations.go = {
+    {
+      type = 'go';
+      name = 'Debug';
+      request = 'launch';
+      showLog = true;
+      dlvToolPath = vim.fn.exepath('dlv');
+      program = '${file}'
+    },
+  }
+EOF
 
 lua << EOF
   require("todo-comments").setup {
