@@ -176,6 +176,7 @@ Plug 'brooth/far.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'nicwest/vim-camelsnek'
 Plug 'mfussenegger/nvim-dap'
+Plug 'rafcamlet/coc-nvim-lua'
 Plug '~/Documents/vim_dap_helper'
 
 call plug#end()

@@ -13,9 +13,11 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.preferences.quoteStyle": "single",
   "git.addGBlameToVirtualText": true,
   "prettier.enable": true,
   "typescript.format.enabled": false,
+  "explorer.file.reveal.auto": true,
   "cSpell.userWords": [
     "Feishu",
     "Infof",
