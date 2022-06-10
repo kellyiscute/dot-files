@@ -152,6 +152,12 @@ nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
 
 nnoremap <silent> <leader>fmt :<C-u>CocCommand prettier.formatFile<CR>
 
+" dap
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F11> :lua require'dap'.terminate()<CR>
+nnoremap <silent> <F7> :lua require'dap'.step_into()<CR>
+
 call plug#begin()
 
 Plug 'tpope/vim-surround'
