@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-. "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -106,9 +104,6 @@ export NO_PROXY=127.0.0.1,localhost,::1
 alias unbrew="brew uninstall"
 alias reload="source ~/.zshrc"
 eval $(thefuck --alias --enable-experimental-instant-mode)
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 alias fq="export HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890"
 alias noproxy="unset HTTPS_PROXY && unset HTTP_PROXY && unset ALL_PROXY"
@@ -135,5 +130,11 @@ export VISUAL="nvim"
 
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 
-# Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/Users/kelly/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
