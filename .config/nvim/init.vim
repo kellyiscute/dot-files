@@ -38,6 +38,18 @@ hi TodoSignWARN cterm=BOLD
 
 let g:localvimrc_ask=0
 
+" 234rpx
+
+function! Rpx2Vh()
+  let l:word = expand('<cword>>')
+  let l:wordLen = strlen(l:word)
+  let l:num = str2nr(strpart(l:word, 0, l:wordLen - 3))
+  echo l:num
+  let l:vh = l:num / 750.0 * 100 / 9 * 16
+  echo l:vh
+  execute "norm! ciw" . string(floor(l:vh)) . "vh"
+endfunction
+
 function! SynStack()
   if !exists("*synstack")
     return
@@ -198,6 +210,8 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rafcamlet/coc-nvim-lua'
 Plug '~/Documents/vim_dap_helper'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'leafOfTree/vim-svelte-plugin'
 
 call plug#end()
 
@@ -237,3 +251,6 @@ lua << EOF
     -- refer to the configuration section below
   }
 EOF
+
+colorscheme dracula
+

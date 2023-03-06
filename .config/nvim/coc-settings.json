@@ -24,19 +24,26 @@
     "MIAOHUI",
     "WECHAT",
     "WXWORK",
+    "Weixin",
     "Wxid",
+    "alicloud",
     "bson",
     "camelsnek",
+    "datetime",
     "gonanoid",
     "grpc",
     "juzi",
     "juzibot",
     "mongodb",
     "nestjs",
+    "pnpm",
     "protobuf",
     "qmgo",
     "unmarshalling",
+    "upsert",
+    "vals",
     "wechaty",
     "wrapperspb"
-  ]
+  ],
+  "svelte.enable-ts-plugin": true
 }

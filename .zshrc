@@ -1,3 +1,7 @@
+if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
+
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -9,6 +13,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+source /opt/homebrew/share/antigen/antigen.zsh
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +75,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git env npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,7 +104,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 ALL_PROXY=socks5://127.0.0.1:7890
+fi
+
 export NO_PROXY=127.0.0.1,localhost,::1
 alias unbrew="brew uninstall"
 alias reload="source ~/.zshrc"
@@ -107,7 +113,7 @@ eval $(thefuck --alias --enable-experimental-instant-mode)
 
 alias fq="export HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890"
 alias noproxy="unset HTTPS_PROXY && unset HTTP_PROXY && unset ALL_PROXY"
-export PUPPETEER_DOWNLOAD_PATH="/Users/mac/Puppeteer_trash_can"
+export PUPPETEER_DOWNLOAD_PATH="/Users/kelly/Puppeteer_trash_can"
 alias gl_create_repo="git push --set-upstream git@gitlab.juzibot.com:guo40020/\$(git rev-parse --show-toplevel | xargs basename).git \$(git rev-parse --abbrev-ref HEAD)"
 
 export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
@@ -137,4 +143,8 @@ export NVM_DIR="$HOME/.nvm"
 # pnpm
 export PNPM_HOME="/Users/kelly/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+
+alias dodo="cd ~/Documents/dodo"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
