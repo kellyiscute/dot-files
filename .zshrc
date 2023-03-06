@@ -105,7 +105,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 fi
-
+#
+# export HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 ALL_PROXY=socks5://127.0.0.1:7890
 export NO_PROXY=127.0.0.1,localhost,::1
 alias unbrew="brew uninstall"
 alias reload="source ~/.zshrc"
@@ -148,3 +149,13 @@ alias dodo="cd ~/Documents/dodo"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+# pnpm end
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# fnm
+export PATH="/home/kelly/.local/share/fnm:$PATH"
+eval "`fnm env`"
+  # fnm
+  export PATH="/home/kelly/.local/share/fnm:$PATH"
+  eval "`fnm env`"
