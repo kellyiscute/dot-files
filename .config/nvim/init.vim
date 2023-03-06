@@ -63,6 +63,7 @@ let g:mapleader = ' '
 " naming convention switching
 let g:camelsnek_i_am_an_old_fart_with_no_sense_of_humour_or_internet_culture = 0
 let g:camelsnek_alternative_camel_commands = 1
+let g:camelsnek_no_fun_allowed = 0 " Shorter alias for the above.
 
 " find by cursor position
 vnoremap \\ "vy/<C-r>v<CR>
