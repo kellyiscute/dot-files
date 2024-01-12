@@ -203,6 +203,37 @@ font:
 draw_bold_text_with_bright_colors: true
 
 # Colors (Tomorrow Night Bright)
+# colors:
+#   # Default colors
+#   background: '#212c31'
+#   foreground: '#eceff1'
+# 
+#   cursor:
+#     text: '#eceff1'
+#     cursor: '#cacaca'
+# 
+#   # Normal colors
+#   normal:
+#     black: '#4e4e4e'
+#     red: '#D62341'
+#     green: '#9ECE58'
+#     yellow: '#FAED70'
+#     blue: '#396FE2'
+#     magenta: '#BB80B3'
+#     cyan: '#2DDAFD'
+#     white: '#d0d0d0'
+# 
+#   # Bright colors
+#   bright:
+#     black: '#394148'
+#     red: '#FF5370'
+#     green: '#C3E88D'
+#     yellow: '#FFCB6B'
+#     blue: '#82AAFF'
+#     magenta: '#C792EA'
+#     cyan: '#89DDFF'
+#     white: '#ffffff'
+
 colors:
   # Default colors
   primary:
