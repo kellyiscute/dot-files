@@ -13,10 +13,11 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "typescript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "double",
   "git.addGBlameToVirtualText": true,
   "prettier.enable": true,
   "typescript.format.enabled": false,
+  "tsserver.useLocalTsdk": true,
   "explorer.file.reveal.auto": true,
   "cSpell.userWords": [
     "Feishu",
@@ -45,5 +46,12 @@
     "wechaty",
     "wrapperspb"
   ],
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"]
+    }
+  }
 }

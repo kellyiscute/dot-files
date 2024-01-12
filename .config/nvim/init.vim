@@ -9,7 +9,7 @@ set encoding=utf-8
 set nobackup
 set nowritebackup
 
-set updatetime=300
+set updatetime=20
 
 set cursorline
 hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
@@ -37,6 +37,11 @@ hi TodoBgWARN ctermbg=Yellow
 hi TodoSignWARN cterm=BOLD
 
 let g:localvimrc_ask=0
+let g:camelsnek_no_fun_allowed = 0 " Shorter alias for the above.
+let g:airline_theme = 'catppuccin'
+
+nmap <C-j> 4j
+nmap <C-k> 4k
 
 " 234rpx
 
@@ -86,7 +91,7 @@ nnoremap <silent> <C-F9> :FloatermPrev<CR>
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#coc#show_coc_status = 1
 function! AirlineInit()
-  let g:airline_section_a = airline#section#create(['mode', ' | ', '%{strftime("%H:%M:%S")}'])
+  " let g:airline_section_a = airline#section#create(['mode', ' | ', '%{strftime("%H:%M:%S")}'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
@@ -183,6 +188,9 @@ nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
 nnoremap <silent> <F11> :lua require'dap'.terminate()<CR>
 nnoremap <silent> <F7> :lua require'dap'.step_into()<CR>
 
+" close-buf
+command! Q :Bdelete menu<CR>
+
 call plug#begin()
 
 Plug 'tpope/vim-surround'
@@ -208,12 +216,26 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'nicwest/vim-camelsnek'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rafcamlet/coc-nvim-lua'
-Plug '~/Documents/vim_dap_helper'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'folke/tokyonight.nvim', { 'as': 'tokyonight' }
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'lunarvim/Onedarker.nvim'
+Plug 'rafamadriz/neon'
 Plug 'leafOfTree/vim-svelte-plugin'
+Plug 'github/copilot.vim'
+Plug 'lilydjwg/fcitx.vim'
+Plug 'udalov/kotlin-vim'
+Plug 'Asheq/close-buffers.vim'
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'SmiteshP/nvim-navic'
+Plug 'simrat39/symbols-outline.nvim'
 
 call plug#end()
+
+colorscheme tokyonight
+hi Conceal guifg=#949494
 
 " for normal mode - the word under the cursor
 nmap <Leader>di <Plug>VimspectorBalloonEval
@@ -251,6 +273,4 @@ lua << EOF
     -- refer to the configuration section below
   }
 EOF
-
-colorscheme dracula
 
