@@ -8,11 +8,12 @@ set hidden
 set encoding=utf-8
 set nobackup
 set nowritebackup
+set termguicolors
 
 set updatetime=20
 
 set cursorline
-hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
+hi CursorLine cterm=NONE ctermbg=Gray ctermfg=NONE
 hi CursorLineNr cterm=BOLD ctermbg=8
 hi Pmenu cterm=NONE ctermbg=Black ctermfg=Blue
 hi PmenuSel cterm=BOLD ctermbg=DarkGray ctermfg=Blue
@@ -40,8 +41,7 @@ let g:localvimrc_ask=0
 let g:camelsnek_no_fun_allowed = 0 " Shorter alias for the above.
 let g:airline_theme = 'catppuccin'
 
-nmap <C-j> 4j
-nmap <C-k> 4k
+nnoremap J 4j
 
 " 234rpx
 
@@ -224,7 +224,7 @@ Plug 'lunarvim/Onedarker.nvim'
 Plug 'rafamadriz/neon'
 Plug 'leafOfTree/vim-svelte-plugin'
 Plug 'github/copilot.vim'
-Plug 'lilydjwg/fcitx.vim'
+" Plug 'lilydjwg/fcitx.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'Asheq/close-buffers.vim'
 Plug 'nvim-treesitter/nvim-treesitter-context'
