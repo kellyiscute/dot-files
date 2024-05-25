@@ -8,6 +8,7 @@ set hidden
 set encoding=utf-8
 set nobackup
 set nowritebackup
+set relativenumber
 
 set updatetime=20
 
@@ -87,6 +88,14 @@ nnoremap <silent> <C-F11> :FloatermNew<CR>
 nnoremap <silent> <C-F10> :FloatermNext<CR>
 nnoremap <silent> <C-F9> :FloatermPrev<CR>
 
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
 " let g:airline_section_b = '%{strftime("%H:%M")}'
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#coc#show_coc_status = 1
@@ -224,13 +233,15 @@ Plug 'lunarvim/Onedarker.nvim'
 Plug 'rafamadriz/neon'
 Plug 'leafOfTree/vim-svelte-plugin'
 Plug 'github/copilot.vim'
-Plug 'lilydjwg/fcitx.vim'
+" Plug 'lilydjwg/fcitx.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'Asheq/close-buffers.vim'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'SmiteshP/nvim-navic'
 Plug 'simrat39/symbols-outline.nvim'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
