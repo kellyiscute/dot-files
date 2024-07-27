@@ -84,9 +84,9 @@ command Reload source ~/.config/nvim/init.vim
 map <leader>1 $
 
 let g:floaterm_keymap_toggle = '<F12>'
-nnoremap <silent> <C-F11> :FloatermNew<CR>
-nnoremap <silent> <C-F10> :FloatermNext<CR>
-nnoremap <silent> <C-F9> :FloatermPrev<CR>
+nnoremap <silent> <F11> :FloatermNew<CR>
+nnoremap <silent> <F10> :FloatermNext<CR>
+nnoremap <silent> <F9> :FloatermPrev<CR>
 
 if ! has('gui_running')
     set ttimeoutlen=10
@@ -103,8 +103,6 @@ function! AirlineInit()
   " let g:airline_section_a = airline#section#create(['mode', ' | ', '%{strftime("%H:%M:%S")}'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
-
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " GoTo code navigation.
 nmap <silent> gds :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
@@ -139,11 +137,11 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <silent> <leader>a <Plug>(coc-codeaction-selected)<CR>
+nmap <silent> <leader>a <Plug>(coc-codeaction-selected)<CR>
 
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -189,13 +187,19 @@ nnoremap <silent> [fzf-p]t     :<C-u>CocCommand fzf-preview.BufferTags<CR>
 nnoremap <silent> [fzf-p]q     :<C-u>CocCommand fzf-preview.QuickFix<CR>
 nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
 
-nnoremap <silent> <leader>fmt :<C-u>CocCommand prettier.formatFile<CR>
+nnoremap <silent> <leader>fmt :<C-u>CocCommand editor.action.formatDocument<CR>
+
+" telescope
+nnoremap <leader>p <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>S <cmd>Telescope treesitter<cr>
 
 " dap
-nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
-nnoremap <silent> <F11> :lua require'dap'.terminate()<CR>
-nnoremap <silent> <F7> :lua require'dap'.step_into()<CR>
+" nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+" nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+" nnoremap <silent> <F11> :lua require'dap'.terminate()<CR>
+" nnoremap <silent> <F7> :lua require'dap'.step_into()<CR>
 
 " close-buf
 command! Q :Bdelete menu<CR>
@@ -216,7 +220,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'iamcco/coc-diagnostic'
 Plug 'wakatime/vim-wakatime'
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'uarun/vim-protobuf'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'bkad/CamelCaseMotion'
@@ -242,7 +246,7 @@ Plug 'SmiteshP/nvim-navic'
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'ryanoasis/vim-devicons'
-
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 colorscheme tokyonight
@@ -255,6 +259,17 @@ xmap <Leader>di <Plug>VimspectorBalloonEval
 let g:vimspector_enable_mappings = 'HUMAN'
 
 " todo-comments config
+lua << EOF
+  require("todo-comments").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+hi todobgfix guibg=#bf616a guifg=#d8dee9 gui=bold
+hi todobgtodo guibg=#d08770 guifg=#3b4252 gui=bold
+hi todobghack guibg=#a3be8c guifg=#3b4252 gui=bold
+hi todobgwarn guibg=#ebcb8b guifg=#2e3440 gui=bold
 
 " ========dap configurations
 " dap-golang
@@ -278,10 +293,22 @@ lua << EOF
 EOF
 
 lua << EOF
+  require("ibl").setup()
   require("todo-comments").setup {
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
+  }
+EOF
+
+lua << EOF
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,
+    },
+    indent = {
+      enable = true
+    },
   }
 EOF
 

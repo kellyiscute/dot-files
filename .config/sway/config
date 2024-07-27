@@ -31,7 +31,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/space-wallpaper.jpg fill
+output * bg ~/Pictures/kali-lincox-bg.jpg fill
 # Output order & position
 output DP-3 pos 0 0 mode 2560x1440@170Hz
 output DP-1 pos 2560 0 mode 2560x1440@165Hz
@@ -263,11 +263,12 @@ exec_always {
     gsettings set org.gnome.desktop.interface cursor-theme 'Breeze-Dark'
     gsettings set org.gnome.desktop.interface font-name 'FiraCode Nerd Font 12'
 }
-exec /usr/lib/polkit-kde-authentication-agent-1
-exec --no-startup-id /usr/lib/pam_kwallet_init
-exec fcitx5
-exec swaync
-exec solaar --window=hide
+exec_always /usr/lib/polkit-kde-authentication-agent-1
+exec_always --no-startup-id /usr/lib/pam_kwallet_init
+exec_always fcitx5
+exec_always swaync
+exec_always solaar --window=hide
+exec_always wayvnc 0.0.0.0
 for_window [app_id="ulauncher"] floating enable, border none
 exec GDK_BACKEND=wayland ulauncher --hide-window
 include /etc/sway/config.d/*

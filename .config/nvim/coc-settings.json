@@ -13,10 +13,10 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.preferences.quoteStyle": "double",
+  "typescript.suggest.completeJSDocs": true,
   "git.addGBlameToVirtualText": true,
-  "prettier.enable": true,
-  "typescript.format.enabled": false,
   "tsserver.useLocalTsdk": true,
+  "prettier.enable": true,
   "explorer.file.reveal.auto": true,
   "coc.preferences.formatOnSave": true,
   "cSpell.userWords": [
