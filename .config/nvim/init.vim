@@ -40,6 +40,7 @@ hi TodoSignWARN cterm=BOLD
 let g:localvimrc_ask=0
 let g:camelsnek_no_fun_allowed = 0 " Shorter alias for the above.
 let g:airline_theme = 'catppuccin'
+let g:airline_highlighting_cache = 1
 
 nmap <C-j> 4j
 nmap <C-k> 4k

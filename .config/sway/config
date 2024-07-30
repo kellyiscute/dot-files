@@ -269,6 +269,7 @@ exec_always fcitx5
 exec_always swaync
 exec_always solaar --window=hide
 exec_always wayvnc 0.0.0.0
+exec_always XDG_MENU_PREFIX=arch- kbuildsycoca6 
 for_window [app_id="ulauncher"] floating enable, border none
 exec GDK_BACKEND=wayland ulauncher --hide-window
 include /etc/sway/config.d/*

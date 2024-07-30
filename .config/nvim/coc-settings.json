@@ -54,5 +54,12 @@
       "filetypes": ["terraform", "tf"]
     }
   },
-  "flutter.lsp.initialization.closingLabels": true
+  "flutter.lsp.initialization.closingLabels": true,
+  "workspace.ignoredFolders": [
+    "$HOME",
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**",
+    "$HOME/pkg/mod/**",
+    "$HOMEBREW_PREFIX/**"
+  ]
 }
