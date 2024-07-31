@@ -1,0 +1,251 @@
+/*
+ * Author: L. Aniva
+ *
+ * The central theme of this config is the "stars on a nightsky" effect. Each
+ * module doesn't have a background (however dark) and floats on top of the
+ * dark-themed wallpaper like stars.
+ *
+ * The theme is tuned to 3840x2160 screen sizes with horizontal waybar. Some
+ * tuning of font sizes may be needed on smaller screens.
+ *
+ * Credit: Code Breaker for inspiring this colour palette
+ */
+
+@define-color window        #eeeeee;
+@define-color window_border rgba(80%, 80%, 80%, 0.7);
+
+@define-color workspace                 #bbbbbb;
+@define-color workspace_bg              transparent;
+@define-color workspace_active          #eeeeee;
+@define-color workspace_active_bg alpha(#64727D, 0.5);
+
+@define-color mpd rgba(88%, 91%, 88%, 0.7);
+
+@define-color tray_background rgba(80%, 80%, 80%, 0.1);
+@define-color tray                 #c9cbff;
+@define-color keyboard             #f2cdcd;
+@define-color language             #e8a2af;
+@define-color idle_inhibitor       #f28fad;
+@define-color audio                #fae3b0;
+@define-color backlight            #f8bd96;
+@define-color bluetooth            #caa9c7;
+@define-color network              #bd93f9;
+@define-color cpu                  #96cdfb;
+@define-color memory               #88bbeb;
+@define-color temperature          #ddb6f2;
+@define-color temperature_critical #ff6666;
+@define-color battery              #b6b2b3;
+@define-color clock                #abe9b3;
+@define-color user                 #89dceb;
+
+window#waybar {
+  background: transparent;
+}
+
+/* Do not use * selector since it modifies the menus. */
+#window,
+#workspaces {
+  font-family: monospace;
+  font-size: 15px;
+  min-height: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  margin-top: 1px;
+  margin-bottom: 0px;
+  border: none;
+  background: transparent;
+  border-radius: 10;
+}
+#tray,
+#idle_inhibitor,
+#keyboard-state,
+#language,
+#user,
+#backlight,
+#clock,
+#cpu,
+#bluetooth,
+#network,
+#memory,
+#pulseaudio,
+#temperature {
+  font-family: monospace;
+  font-size: 15px;
+  min-height: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  margin-top: 1px;
+  margin-bottom: 0px;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  border-top: 2px solid;
+}
+
+/* Left */
+widget #window {
+  font-family: "Noto Sans";
+  color: @window;
+  /* Three different styles */
+  border-top: none;
+  /*
+	border-top: 2px dotted @window_border;
+	border-radius: 0;
+	*/
+  /*
+	border-right: 2px solid @window_border;
+	border-radius: 30;
+	*/
+  /*
+	border-left: 2px solid @window_border;
+	border-right: 2px solid @window_border;
+	border-radius: 5;
+	 */
+  background: transparent;
+  padding-left: 5px;
+  padding-right: 15px;
+}
+#workspaces label {
+  font-family: monospace;
+  font-size: 30px;
+  min-width: 30px;
+  padding: 0 0 0 0;
+  /* Ensure the symbols are much bigger */
+  margin: -6 -6 -6 -6;
+}
+#workspaces button {
+  color: @workspace;
+  background: @workspace_bg;
+  margin: 0 0 0 0;
+  padding-top: 10px;
+  border-radius: 5;
+}
+#workspaces button.active {
+  color: @workspace_active;
+  background: @workspace_active_bg;
+  margin: 0 0 0 0;
+  padding-top: 10px;
+  border-radius: 5;
+}
+#workspaces button.hidden button.urgent {
+  color: #0000ff;
+  background: @workspace_active_bg;
+  margin: 0 0 0 0;
+  padding-top: 10px;
+  border-radius: 5;
+}
+
+/* Centre */
+widget #mpd {
+  font-family: "Noto Serif";
+  padding-left: 5px;
+  padding-right: 5px;
+  color: @mpd;
+  border: none;
+}
+
+/* Right */
+widget #tray {
+  /*
+	border-left:  2px solid @tray;
+	border-right: 2px solid @tray;
+	min-width: 5px;
+	border-radius: 20;*/
+  background: @tray_background;
+  padding-right: 10px;
+  color: @tray;
+  border-top: 2px dotted alpha(@tray, 0.5);
+}
+
+widget #idle_inhibitor.activated {
+  min-width: 25px;
+  color: @idle_inhibitor;
+  border-top-color: alpha(@idle_inhibitor, 0.5);
+}
+widget #idle_inhibitor.deactivated {
+  min-width: 25px;
+  color: alpha(@idle_inhibitor, 0.5);
+  border-top-color: alpha(@idle_inhibitor, 0.5);
+}
+widget #keyboard-state {
+  color: @keyboard;
+  border-top-color: alpha(@keyboard, 0.5);
+}
+/* Ensure toggling doesn't affect layout */
+#keyboard-state label {
+  opacity: 0.5;
+  min-width: 80px;
+}
+#keyboard-state label.locked {
+  opacity: 1;
+  min-width: 80px;
+}
+
+widget #language {
+  color: @language;
+  border-top-color: alpha(@language, 0.5);
+}
+widget #pulseaudio {
+  color: @audio;
+  border-top-color: alpha(@audio, 0.5);
+}
+widget #backlight {
+  color: @backlight;
+  border-top-color: alpha(@backlight, 0.5);
+}
+widget #bluetooth {
+  color: @bluetooth;
+  border-top-color: alpha(@bluetooth, 0.5);
+}
+widget
+  #bluetooth.on
+  #bluetooth.connected
+  #bluetooth.discoverable
+  #bluetooth.discovering
+  #bluetooth.pairable {
+  opacity: 1;
+}
+widget #bluetooth.off {
+  opacity: 0.5;
+}
+widget #bluetooth.disabled {
+  opacity: 0.5;
+}
+widget #network {
+  color: @network;
+  border-top-color: alpha(@network, 0.5);
+}
+widget #cpu {
+  color: @cpu;
+  border-top-color: alpha(@cpu, 0.5);
+}
+widget #memory {
+  color: @memory;
+  border-top-color: alpha(@memory, 0.5);
+}
+widget #temperature {
+  min-width: 60px;
+  color: @temperature;
+  border-top-color: alpha(@temperature, 0.5);
+}
+widget #temperature.critical {
+  min-width: 60px;
+  color: @temperature_critical;
+  border-top-color: alpha(@temperature, 0.5);
+}
+widget #battery {
+  color: @battery;
+  border-top-color: alpha(@battery, 0.5);
+}
+widget #clock {
+  color: @clock;
+  border-top-color: alpha(@clock, 0.5);
+}
+
+widget #user {
+  color: @user;
+  border-top-color: alpha(@user, 0.5);
+  font-family: "Noto Serif";
+}

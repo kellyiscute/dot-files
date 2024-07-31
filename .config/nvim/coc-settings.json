@@ -1,6 +1,5 @@
 {
-	"npm.binPath": "pnpm",
-	"coc.preferences.formatOnSaveFiletypes": ["ts", "tsx", "jsx", "js", "css", "scss", "less", "go"],
+	"npm.binPath": "pnpm", "coc.preferences.formatOnSaveFiletypes": ["ts", "tsx", "jsx", "js", "css", "scss", "less", "go"],
 	"coc.preferences.formatOnTypeFiletypes": ["ts", "tsx", "jsx", "js", "css", "scss", "less", "go"],
   "coc.preferences.enableMessageDialog": true,
 	"prettier.printWidth": 100,
@@ -14,11 +13,14 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.preferences.quoteStyle": "double",
+  "typescript.suggest.completeJSDocs": true,
   "git.addGBlameToVirtualText": true,
+  "tsserver.useLocalTsdk": true,
   "prettier.enable": true,
   "typescript.format.enabled": false,
   "tsserver.useLocalTsdk": true,
   "explorer.file.reveal.auto": true,
+  "coc.preferences.formatOnSave": true,
   "cSpell.userWords": [
     "Feishu",
     "Infof",
@@ -53,5 +55,13 @@
       "args": ["serve"],
       "filetypes": ["terraform", "tf"]
     }
-  }
+  },
+  "flutter.lsp.initialization.closingLabels": true,
+  "workspace.ignoredFolders": [
+    "$HOME",
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**",
+    "$HOME/pkg/mod/**",
+    "$HOMEBREW_PREFIX/**"
+  ]
 }

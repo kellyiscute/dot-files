@@ -1,0 +1,17 @@
+Plugins = {
+  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+  {'neovim/nvim-lspconfig'},
+  {'hrsh7th/cmp-nvim-lsp'},
+  {'hrsh7th/nvim-cmp'},
+  {'L3MON4D3/LuaSnip'},
+  {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+  {'nvim-tree/nvim-tree.lua', dependencies = { 'nvim-tree/nvim-web-devicons' }},
+  {'voldikss/vim-floaterm'},
+  { 'nvim-lua/plenary.nvim' },
+  {'nvim-telescope/telescope.nvim', tag = '0.1.4'},
+  {'vim-airline/vim-airline'},
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+  {'tpope/vim-surround'},
+  {'windwp/nvim-autopairs', opts = {}},
+}

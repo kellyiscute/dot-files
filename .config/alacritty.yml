@@ -48,7 +48,7 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   #decorations: full
-  decorations: transparent
+  decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -59,7 +59,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Fullscreen
+  startup_mode: Maximized
   # Window title
   title: Alacritty
 
@@ -171,13 +171,13 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 10
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 1
+    y: 0
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
@@ -203,36 +203,68 @@ font:
 draw_bold_text_with_bright_colors: true
 
 # Colors (Tomorrow Night Bright)
+# colors:
+#   # Default colors
+#   background: '#212c31'
+#   foreground: '#eceff1'
+# 
+#   cursor:
+#     text: '#eceff1'
+#     cursor: '#cacaca'
+# 
+#   # Normal colors
+#   normal:
+#     black: '#4e4e4e'
+#     red: '#D62341'
+#     green: '#9ECE58'
+#     yellow: '#FAED70'
+#     blue: '#396FE2'
+#     magenta: '#BB80B3'
+#     cyan: '#2DDAFD'
+#     white: '#d0d0d0'
+# 
+#   # Bright colors
+#   bright:
+#     black: '#394148'
+#     red: '#FF5370'
+#     green: '#C3E88D'
+#     yellow: '#FFCB6B'
+#     blue: '#82AAFF'
+#     magenta: '#C792EA'
+#     cyan: '#89DDFF'
+#     white: '#ffffff'
+
 colors:
   # Default colors
-  background: '#212c31'
-  foreground: '#eceff1'
-
-  cursor:
-    text: '#eceff1'
-    cursor: '#cacaca'
+  primary:
+    background: '0x0d1117'
+    foreground: '0xb3b1ad'
 
   # Normal colors
   normal:
-    black: '#4e4e4e'
-    red: '#D62341'
-    green: '#9ECE58'
-    yellow: '#FAED70'
-    blue: '#396FE2'
-    magenta: '#BB80B3'
-    cyan: '#2DDAFD'
-    white: '#d0d0d0'
+    black:   '0x484f58'
+    red:     '0xff7b72'
+    green:   '0x3fb950'
+    yellow:  '0xd29922'
+    blue:    '0x58a6ff'
+    magenta: '0xbc8cff'
+    cyan:    '0x39c5cf'
+    white:   '0xb1bac4'
 
   # Bright colors
   bright:
-    black: '#394148'
-    red: '#FF5370'
-    green: '#C3E88D'
-    yellow: '#FFCB6B'
-    blue: '#82AAFF'
-    magenta: '#C792EA'
-    cyan: '#89DDFF'
-    white: '#ffffff'
+    black:   '0x6e7681'
+    red:     '0xffa198'
+    green:   '0x56d364'
+    yellow:  '0xe3b341'
+    blue:    '0x79c0ff'
+    magenta: '0xd2a8ff'
+    cyan:    '0x56d4dd'
+    white:   '0xf0f6fc'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xffa198' }
 
 # Visual Bell
 #

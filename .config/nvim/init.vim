@@ -8,6 +8,7 @@ set hidden
 set encoding=utf-8
 set nobackup
 set nowritebackup
+set relativenumber
 
 set updatetime=20
 
@@ -40,20 +41,14 @@ let g:localvimrc_ask=0
 let g:camelsnek_no_fun_allowed = 0 " Shorter alias for the above.
 let g:airline_theme = 'catppuccin'
 
+let g:airline_highlighting_cache = 1
+let g:coc_start_at_startup = v:false
+
 nmap <C-j> 4j
 nmap <C-k> 4k
 
-" 234rpx
-
-function! Rpx2Vh()
-  let l:word = expand('<cword>>')
-  let l:wordLen = strlen(l:word)
-  let l:num = str2nr(strpart(l:word, 0, l:wordLen - 3))
-  echo l:num
-  let l:vh = l:num / 750.0 * 100 / 9 * 16
-  echo l:vh
-  execute "norm! ciw" . string(floor(l:vh)) . "vh"
-endfunction
+nmap <C-j> 4j
+nmap <C-k> 4k
 
 function! SynStack()
   if !exists("*synstack")
@@ -83,82 +78,25 @@ command Reload source ~/.config/nvim/init.vim
 map <leader>1 $
 
 let g:floaterm_keymap_toggle = '<F12>'
-nnoremap <silent> <C-F11> :FloatermNew<CR>
-nnoremap <silent> <C-F10> :FloatermNext<CR>
-nnoremap <silent> <C-F9> :FloatermPrev<CR>
+nnoremap <silent> <F11> :FloatermNew<CR>
+nnoremap <silent> <F10> :FloatermNext<CR>
+nnoremap <silent> <F9> :FloatermPrev<CR>
 
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
 " let g:airline_section_b = '%{strftime("%H:%M")}'
-let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#coc#show_coc_status = 1
+" let g:airline#extensions#coc#enabled = 1
+" let g:airline#extensions#coc#show_coc_status = 1
 function! AirlineInit()
   " let g:airline_section_a = airline#section#create(['mode', ' | ', '%{strftime("%H:%M:%S")}'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
-
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-" GoTo code navigation.
-nmap <silent> gds :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
-nmap <silent> gdd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> <leader>c :CocCommand<CR>
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" show symbol
-nnoremap <silent> <leader>s :<C-u>CocList symbols<CR>
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-nmap <leader>rn <Plug>(coc-rename)
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-nmap <space>e <Cmd>CocCommand explorer<CR>
 
 " fzf
 nmap <Leader>z [fzf-p]
@@ -180,13 +118,36 @@ nnoremap <silent> [fzf-p]t     :<C-u>CocCommand fzf-preview.BufferTags<CR>
 nnoremap <silent> [fzf-p]q     :<C-u>CocCommand fzf-preview.QuickFix<CR>
 nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
 
-nnoremap <silent> <leader>fmt :<C-u>CocCommand prettier.formatFile<CR>
+nnoremap <silent> <leader>fmt :<C-u>CocCommand editor.action.formatDocument<CR>
 
-" dap
-nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
-nnoremap <silent> <F11> :lua require'dap'.terminate()<CR>
-nnoremap <silent> <F7> :lua require'dap'.step_into()<CR>
+" telescope
+nnoremap <leader>p <cmd>Telescope find_files<cr>
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>S <cmd>Telescope treesitter<cr>
+nnoremap gr <cmd>Telescope lsp_references<cr>
+nnoremap gd <cmd>Telescope lsp_definitions<cr>
+nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
+
+" lsp
+nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
+nnoremap <leader>a <cmd>lua vim.lsp.buf.code_action()<cr>
+nnoremap <leader>fmt <cmd>lua vim.lsp.buf.formatting()<cr>
+
+" zen mode
+nnoremap <leader>Z <cmd>ZenMode<CR>
+
+" close-buf
+command! Q :Bdelete menu<CR>
+
+nnoremap <silent> <leader>e :Neotree toggle<CR>
+
+if v:vim_did_enter
+  Telescope find_files
+else
+  au VimEnter * Telescope find_files
+endif
 
 " close-buf
 command! Q :Bdelete menu<CR>
@@ -194,7 +155,7 @@ command! Q :Bdelete menu<CR>
 call plug#begin()
 
 Plug 'tpope/vim-surround'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'voldikss/vim-floaterm'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -205,17 +166,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'lambdalisue/gina.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim'
-Plug 'iamcco/coc-diagnostic'
+" Plug 'iamcco/coc-diagnostic'
 Plug 'wakatime/vim-wakatime'
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'uarun/vim-protobuf'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'bkad/CamelCaseMotion'
 Plug 'brooth/far.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'nicwest/vim-camelsnek'
-Plug 'mfussenegger/nvim-dap'
-Plug 'rafcamlet/coc-nvim-lua'
+" Plug 'rafcamlet/coc-nvim-lua'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'folke/tokyonight.nvim', { 'as': 'tokyonight' }
@@ -224,14 +184,58 @@ Plug 'lunarvim/Onedarker.nvim'
 Plug 'rafamadriz/neon'
 Plug 'leafOfTree/vim-svelte-plugin'
 Plug 'github/copilot.vim'
-Plug 'lilydjwg/fcitx.vim'
+" Plug 'lilydjwg/fcitx.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'Asheq/close-buffers.vim'
-Plug 'nvim-treesitter/nvim-treesitter-context'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'SmiteshP/nvim-navic'
 Plug 'simrat39/symbols-outline.nvim'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-telescope/telescope.nvim'
 
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-neo-tree/neo-tree.nvim'
+
+Plug 'f-person/git-blame.nvim'
+
+" -- Treesitter
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'windwp/nvim-autopairs'
+
+" -- LSP and completion
+" -- LSP
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+
+" -- Completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'petertriho/cmp-git'
+
+Plug 'nvim-telescope/telescope-ui-select.nvim'
+
+" -- Snippets
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
+" -- Linter
+Plug 'mfussenegger/nvim-lint'
+
+" -- Formatter
+Plug 'mhartington/formatter.nvim'
+
+" -- Debugger
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-dap-ui'
+
+" -- Zen mode
+Plug 'folke/zen-mode.nvim'
 call plug#end()
 
 colorscheme tokyonight
@@ -244,6 +248,22 @@ xmap <Leader>di <Plug>VimspectorBalloonEval
 let g:vimspector_enable_mappings = 'HUMAN'
 
 " todo-comments config
+lua << EOF
+  require("todo-comments").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+hi todobgfix guibg=#bf616a guifg=#d8dee9 gui=bold
+hi todobgtodo guibg=#d08770 guifg=#3b4252 gui=bold
+hi todobghack guibg=#a3be8c guifg=#3b4252 gui=bold
+hi todobgwarn guibg=#ebcb8b guifg=#2e3440 gui=bold
+
+" pairs
+lua << EOF
+require("nvim-autopairs").setup {}
+EOF
 
 " ========dap configurations
 " dap-golang
@@ -267,6 +287,7 @@ lua << EOF
 EOF
 
 lua << EOF
+  require("ibl").setup()
   require("todo-comments").setup {
     -- your configuration comes here
     -- or leave it empty to use the default settings
@@ -274,3 +295,121 @@ lua << EOF
   }
 EOF
 
+lua << EOF
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,
+    },
+    indent = {
+      enable = true
+    },
+  }
+EOF
+
+lua << EOF
+  local actions = require("telescope.actions")
+  require("telescope").setup {
+    defaults = {
+      mappings = {
+        i = {
+          ["<ESC>"] = actions.close
+        },
+      },
+    },
+    extensions = {
+      ["ui-select"] = {
+        require("telescope.themes").get_cursor {}
+      },
+    }
+  }
+
+  require("telescope").load_extension("ui-select")
+EOF
+
+lua << EOF
+  require("mason").setup()
+  require("mason-lspconfig").setup()
+
+  local cmp = require'cmp'
+
+  local mapping = {
+
+  };
+
+  cmp.setup {
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+    preselect = cmp.PreselectMode.Item,
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    window = {
+      completion = cmp.config.window.bordered(),
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+    }, {
+      { name = 'buffer' },
+    }),
+  }
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'git' },
+    }, {
+      { name = 'buffer' },
+    })
+  })
+  require("cmp_git").setup()
+
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+  require("mason-lspconfig").setup_handlers {
+    function (server_name)
+      require("lspconfig")[server_name].setup {
+        capabilities = capabilities,
+        init_options = {
+          preferences = {
+            ["typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets"] = true,
+            ["typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces"] = true,
+            ["typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces"] = true,
+            ["typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces"] = true,
+          }
+        }
+      }
+    end
+  }
+  
+  require("neo-tree").setup {
+    open_on_setup = true,
+    window = {
+      mappings = {
+        ["s"] = "open_split",
+        ["E"] = "open_vsplit",
+        ["l"] = "open",
+        ["h"] = "close_node",
+      }
+    }
+  }
+EOF
+
+lua << EOF
+  require("zen-mode").setup {
+    window = {
+      width = 150,
+      height = 0.95,
+    }
+  }
+EOF
+
+sign define DiagnosticSignError text= texthl=DiagnosticSignError
+sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn
+sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo
+sign define DiagnosticSignHint text=󰌵 texthl=DiagnosticSignHint
