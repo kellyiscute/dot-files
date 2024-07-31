@@ -40,8 +40,12 @@ hi TodoSignWARN cterm=BOLD
 let g:localvimrc_ask=0
 let g:camelsnek_no_fun_allowed = 0 " Shorter alias for the above.
 let g:airline_theme = 'catppuccin'
+
 let g:airline_highlighting_cache = 1
 let g:coc_start_at_startup = v:false
+
+nmap <C-j> 4j
+nmap <C-k> 4k
 
 nmap <C-j> 4j
 nmap <C-k> 4k
@@ -145,6 +149,9 @@ else
   au VimEnter * Telescope find_files
 endif
 
+" close-buf
+command! Q :Bdelete menu<CR>
+
 call plug#begin()
 
 Plug 'tpope/vim-surround'
@@ -226,7 +233,6 @@ Plug 'mhartington/formatter.nvim'
 " -- Debugger
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-dap-ui'
-
 
 " -- Zen mode
 Plug 'folke/zen-mode.nvim'
