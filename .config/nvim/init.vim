@@ -129,7 +129,7 @@ nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
 " lsp
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <leader>a <cmd>lua vim.lsp.buf.code_action()<cr>
-nnoremap <leader>fmt <cmd>lua vim.lsp.buf.formatting()<cr>
+nnoremap <leader>fmt <cmd>lua vim.lsp.buf.format()<cr>
 
 " zen mode
 nnoremap <leader>Z <cmd>ZenMode<CR>
@@ -218,14 +218,16 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
 " -- Linter
-Plug 'mfussenegger/nvim-lint'
+Plug 'nvimtools/none-ls.nvim'
+Plug 'nvimtools/none-ls-extras.nvim'
+"Plug 'mfussenegger/nvim-lint'
 
 " -- Formatter
 Plug 'mhartington/formatter.nvim'
 
 " -- Debugger
 Plug 'mfussenegger/nvim-dap'
-Plug 'nvim-dap-ui'
+Plug 'rcarriga/nvim-dap-ui'
 
 
 " -- Zen mode
@@ -253,11 +255,6 @@ hi todobgfix guibg=#bf616a guifg=#d8dee9 gui=bold
 hi todobgtodo guibg=#d08770 guifg=#3b4252 gui=bold
 hi todobghack guibg=#a3be8c guifg=#3b4252 gui=bold
 hi todobgwarn guibg=#ebcb8b guifg=#2e3440 gui=bold
-
-" pairs
-lua << EOF
-require("nvim-autopairs").setup {}
-EOF
 
 " ========dap configurations
 " dap-golang
@@ -324,11 +321,19 @@ lua << EOF
   require("mason").setup()
   require("mason-lspconfig").setup()
 
+  vim.lsp.set_log_level("debug")
+  local null_ls = require("null-ls")
+  null_ls.setup({
+    debug = true,
+    sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.completion.spell,
+        null_ls.builtins.formatting.prettier,
+        require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
+    },
+  })
+
   local cmp = require'cmp'
-
-  local mapping = {
-
-  };
 
   cmp.setup {
     snippet = {
@@ -337,6 +342,9 @@ lua << EOF
       end,
     },
     preselect = cmp.PreselectMode.Item,
+    completion = {
+      completeopt = 'menu,menuone,noinsert',
+    },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -346,9 +354,11 @@ lua << EOF
     }),
     window = {
       completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
+      { name = 'null-ls' },
       { name = 'vsnip' }, -- For vsnip users.
     }, {
       { name = 'buffer' },
@@ -363,7 +373,7 @@ lua << EOF
   })
   require("cmp_git").setup()
 
-  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
   require("mason-lspconfig").setup_handlers {
     function (server_name)
@@ -378,7 +388,36 @@ lua << EOF
           }
         }
       }
-    end
+    end,
+    
+    ["null-ls"] = require("null-ls").setup({
+      capabilities = capabilities,
+      on_attach = function(client)
+          if client.resolved_capabilities.document_formatting then
+              vim.cmd([[
+                  augroup LspFormatting
+                      autocmd! * <buffer>
+                      autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
+                  augroup END
+              ]])
+          end
+      end,
+    })
+
+  }
+
+  require("formatter").setup {
+    filetype = {
+      typescript = {
+        function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+            stdin = true
+          }
+        end
+      }
+    }
   }
   
   require("neo-tree").setup {
@@ -401,6 +440,11 @@ lua << EOF
       height = 0.95,
     }
   }
+EOF
+
+" pairs
+lua << EOF
+require("nvim-autopairs").setup {}
 EOF
 
 sign define DiagnosticSignError text= texthl=DiagnosticSignError
