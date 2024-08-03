@@ -17,6 +17,8 @@
   "git.addGBlameToVirtualText": true,
   "tsserver.useLocalTsdk": true,
   "prettier.enable": true,
+  "typescript.format.enabled": false,
+  "tsserver.useLocalTsdk": true,
   "explorer.file.reveal.auto": true,
   "coc.preferences.formatOnSave": true,
   "cSpell.userWords": [

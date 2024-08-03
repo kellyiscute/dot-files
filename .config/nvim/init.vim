@@ -52,12 +52,12 @@ sign define DiagnosticSignHint text=󰌵 texthl=DiagnosticSignHint
 let g:localvimrc_ask=0
 let g:camelsnek_no_fun_allowed = 0 " Shorter alias for the above.
 let g:airline_theme = 'catppuccin'
+
 let g:airline_highlighting_cache = 1
 set winbar+=%{%v:lua.require'nvim-navic'.get_location()%}
 
 nmap <C-j> 4j
 nmap <C-k> 4k
-
 
 " naming convention switching
 let g:camelsnek_i_am_an_old_fart_with_no_sense_of_humour_or_internet_culture = 0
@@ -117,6 +117,9 @@ if v:vim_did_enter
 else
   au VimEnter * call AutoTelescope()
 endif
+
+" close-buf
+command! Q :Bdelete menu<CR>
 
 call plug#begin()
 
@@ -196,7 +199,6 @@ Plug 'mhartington/formatter.nvim'
 " -- Debugger
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
-
 
 " -- Zen mode
 Plug 'folke/zen-mode.nvim'
