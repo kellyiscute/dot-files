@@ -1,5 +1,6 @@
 require("fuzzyfinder");
 require("zen");
+require("neckpain");
 require("statusline");
 require("indent-line");
 require("treesitter");

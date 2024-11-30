@@ -13,7 +13,10 @@ require("neo-tree").setup {
       ["E"] = "open_vsplit",
       ["l"] = "open",
       ["h"] = "close_node",
-    }
+    },
+    popup = {
+      border = "rounded",
+    },
   },
   document_symbols = {
     follow_cursor = true,
@@ -36,10 +39,15 @@ require("neo-tree").setup {
       },
     },
   },
-  buffers = {
+  filesystem = {
     follow_current_file = {
       enable = true,
       leave_dirs_open = true,
+    },
+  },
+  buffers = {
+    follow_current_file = {
+      enable = true,
     },
   },
   source_selector = {

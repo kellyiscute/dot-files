@@ -5,16 +5,48 @@
     "spacing": 4,
     "margin": "0 15 0 0",
     "modules-left": [
-        "sway/window"
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
-    "modules-center": [],
+    "modules-center": ["mpd"],
     "modules-right": [
         "tray",
         "idle_inhibitor",
         "pulseaudio", "bluetooth", "network", "cpu", "memory", "temperature", "clock"
     ],
+    "hyprland/window": {
+        "format": "<span color=\"#DDDDDD\" font-size=\"150%\"></span> {}",
+    },
     "sway/window": {
         "format": "<span color=\"#DDDDDD\" font-size=\"100%\"></span> {}",
+    },
+     "mpd": {
+        "format": "{stateIcon} 『{artist} - {title} 』 ",
+        "format-disconnected": "Disconnected",
+        "format-stopped": "",
+        "unknown-tag": "N/A",
+        "server": "/home/kelly/.mpd/socket",
+        "interval": 1,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD - {title}",
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "on-click": "mpc toggle",
+        "on-click-right": "mpc next"
     },
     "keyboard-state": {
         "numlock": true,

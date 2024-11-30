@@ -109,8 +109,8 @@ widget #window {
 }
 #workspaces label {
   font-family: monospace;
-  font-size: 30px;
-  min-width: 30px;
+  font-size: 15px;
+  min-width: 15px;
   padding: 0 0 0 0;
   /* Ensure the symbols are much bigger */
   margin: -6 -6 -6 -6;

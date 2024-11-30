@@ -12,6 +12,9 @@ set relativenumber
 set updatetime=20
 set cursorline
 
+" use bun
+let g:node_host_prog = '/home/kelly/.bun/bin/bun'
+
 " There used to be a bug with space as leader. I don't know if it's fixed now.
 nnoremap <SPACE> <Nop>
 let g:mapleader = ' '
@@ -20,6 +23,10 @@ hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
 hi CursorLineNr cterm=BOLD ctermbg=8
 hi Pmenu cterm=NONE ctermbg=Black ctermfg=Blue
 hi PmenuSel cterm=BOLD ctermbg=DarkGray ctermfg=Blue
+
+" Spotify
+let g:spotify_client_id = '0495bc14e11a455fb1ff2a2c2615dc9b'
+let g:spotify_client_secret = 'a085aaeddfb24520889b337043ebf6c6'
 
 " Syntax
 hi String ctermfg=DarkGreen
@@ -51,7 +58,7 @@ sign define DiagnosticSignHint text=󰌵 texthl=DiagnosticSignHint
 
 let g:localvimrc_ask=0
 let g:camelsnek_no_fun_allowed = 0 " Shorter alias for the above.
-let g:airline_theme = 'catppuccin'
+let g:airline_theme = 'tokyonight'
 
 let g:airline_highlighting_cache = 1
 set winbar+=%{%v:lua.require'nvim-navic'.get_location()%}
@@ -83,13 +90,18 @@ nnoremap <silent> <F9> :FloatermPrev<CR>
 
 " telescope
 nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>S <cmd>Telescope treesitter<cr>
 nnoremap gr <cmd>Telescope lsp_references<cr>
 nnoremap gd <cmd>Telescope lsp_definitions<cr>
+nnoremap <leader>d <cmd>Telescope diagnostics<cr>
 nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
+
+" player controls
+nnoremap <silent> <leader>pp :silent exec "!playerctl -p spotify play-pause"<CR>
+nnoremap <silent> <leader>pn :silent exec "!playerctl -p spotify next"<CR>
+nnoremap <silent> <leader>pl :SpotifyPlaylist<CR>
 
 " lsp
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
@@ -97,12 +109,18 @@ nnoremap <leader>a <cmd>lua vim.lsp.buf.code_action()<cr>
 nnoremap fmt <cmd>lua vim.lsp.buf.format()<cr>
 
 " zen mode
-nnoremap <leader>Z <cmd>ZenMode<CR>
+nnoremap <leader>z <cmd>NoNeckPain<CR>
 
 " close-buf
 command! Q :Bdelete menu<CR>
 
-nnoremap <silent> <leader>e :Neotree toggle<CR>
+" buf jmp
+nnoremap <silent> - :bprev<CR>
+nnoremap <silent> = :bnext<CR>
+
+nnoremap <silent> <leader>ee :Neotree float<CR>
+nnoremap <silent> <leader>eg :Neotree float git_status<CR>
+nnoremap <silent> <leader>E :Neotree toggle<CR>
 
 function! AutoTelescope()
   let l:bufname = bufname()
@@ -155,6 +173,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-telescope/telescope.nvim'
 
+Plug 'easymotion/vim-easymotion'
+
 Plug 'MunifTanjim/nui.nvim'
 Plug 'nvim-neo-tree/neo-tree.nvim'
 
@@ -202,12 +222,19 @@ Plug 'rcarriga/nvim-dap-ui'
 
 " -- Zen mode
 Plug 'folke/zen-mode.nvim'
+Plug 'shortcuts/no-neck-pain.nvim', { 'tag': '*' }
 
 " -- Yuck - eww highlight
 Plug 'elkowar/yuck.vim'
 
 " -- Pretty input box
 Plug 'liangxianzhe/floating-input.nvim'
+
+Plug '~/Documents/spotify.nvim'
+Plug 'petobens/poet-v'
+
+" -- mongo
+Plug 'kopecmaciej/vi-mongo.nvim'
 call plug#end()
 
 colorscheme tokyonight
