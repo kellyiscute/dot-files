@@ -118,9 +118,8 @@ command! Q :Bdelete menu<CR>
 nnoremap <silent> - :bprev<CR>
 nnoremap <silent> = :bnext<CR>
 
-nnoremap <silent> <leader>ee :Neotree float<CR>
+nnoremap <silent> <leader>ee :Neotree float reveal<CR>
 nnoremap <silent> <leader>eg :Neotree float git_status<CR>
-nnoremap <silent> <leader>E :Neotree toggle<CR>
 
 function! AutoTelescope()
   let l:bufname = bufname()

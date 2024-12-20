@@ -1,14 +1,14 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 20,
+  "height": 15,
   "spacing": 4,
-  "margin": "0 15 0 0",
+  "margin": "0 0 0 0",
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/window"
   ],
-  "modules-center": ["mpd"],
+  "modules-center": ["mpd","mpris"],
   "modules-right": [
     "tray",
     "idle_inhibitor",
@@ -20,33 +20,46 @@
   "sway/window": {
     "format": "<span color=\"#DDDDDD\" font-size=\"100%\"></span> {}",
   },
-    "mpd": {
-      "format": "{stateIcon} 『{artist} - {title} 』 ",
-      "format-disconnected": "Disconnected",
-      "format-stopped": "",
-      "unknown-tag": "N/A",
-      "server": "/home/kelly/.mpd/socket",
-      "interval": 1,
-      "consume-icons": {
-          "on": " "
-      },
-      "random-icons": {
-          "on": " "
-      },
-      "repeat-icons": {
-          "on": " "
-      },
-      "single-icons": {
-          "on": "1 "
-      },
-      "state-icons": {
-          "paused": "",
-          "playing": ""
-      },
+  "mpd": {
+    "format": "󱉺  {stateIcon}{artist} - {title} ",
+    "format-disconnected": "Disconnected",
+    "format-stopped": "",
+    "unknown-tag": "N/A",
+    "server": "/home/kelly/.mpd/socket",
+    "interval": 1,
+    "consume-icons": {
+        "on": " "
+    },
+    "random-icons": {
+        "on": " "
+    },
+    "repeat-icons": {
+        "on": " "
+    },
+    "single-icons": {
+        "on": "1 "
+    },
+    "state-icons": {
+        "paused": "",
+        "playing": ""
+    },
     "tooltip-format": "MPD - {title}",
     "tooltip-format-disconnected": "MPD (disconnected)",
     "on-click": "mpc toggle",
     "on-click-right": "mpc next"
+  },
+  "mpris": {
+    "player": "spotify",
+    "interval": 1,
+    "format": "{player_icon}  {status_icon} {artist} - {title}",
+    "title-len": 15,
+    "player-icons": {
+      "spotify": "",
+    },
+    "status-icons": {
+      "playing": "",
+      "paused": ""
+    },
   },
   "keyboard-state": {
     "numlock": true,
