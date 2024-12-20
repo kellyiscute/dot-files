@@ -23,3 +23,6 @@ eval "$(pyenv init -)"
 # qt theme
 set -gx QT_QPA_PLATFORMTHEME qt5ct
 # set -gx QT_STYLE_OVERRIDE kvantum
+
+# MPD
+set -gx MPD_HOST "/home/kelly/.mpd/socket"
