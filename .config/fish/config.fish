@@ -26,3 +26,5 @@ set -gx QT_QPA_PLATFORMTHEME qt5ct
 
 # MPD
 set -gx MPD_HOST "/home/kelly/.mpd/socket"
+
+alias waybar-reload="killall -SIGUSR2 waybar"

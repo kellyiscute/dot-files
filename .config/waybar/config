@@ -21,7 +21,7 @@
     "format": "<span color=\"#DDDDDD\" font-size=\"100%\"></span> {}",
   },
   "mpd": {
-    "format": "󱉺  {stateIcon}{artist} - {title} ",
+    "format": "󱉺 {stateIcon} {title} ",
     "format-disconnected": "Disconnected",
     "format-stopped": "",
     "unknown-tag": "N/A",
@@ -51,7 +51,7 @@
   "mpris": {
     "player": "spotify",
     "interval": 1,
-    "format": "{player_icon}  {status_icon} {artist} - {title}",
+    "format": "{player_icon}  {status_icon} {title}",
     "title-len": 15,
     "player-icons": {
       "spotify": "",

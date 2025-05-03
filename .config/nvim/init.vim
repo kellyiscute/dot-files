@@ -123,17 +123,11 @@ nnoremap <silent> <leader>eg :Neotree float git_status<CR>
 
 function! AutoTelescope()
   let l:bufname = bufname()
-  echo l:bufname
+  echo 'bufname' . l:bufname
   if l:bufname == ''
     Telescope find_files
   endif
 endfunction
-
-if v:vim_did_enter
-  call AutoTelescope()
-else
-  au VimEnter * call AutoTelescope()
-endif
 
 " close-buf
 command! Q :Bdelete menu<CR>
@@ -220,8 +214,8 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 
 " -- Zen mode
-Plug 'folke/zen-mode.nvim'
-Plug 'shortcuts/no-neck-pain.nvim', { 'tag': '*' }
+" Plug 'folke/zen-mode.nvim'
+Plug 'shortcuts/no-neck-pain.nvim'
 
 " -- Yuck - eww highlight
 Plug 'elkowar/yuck.vim'
@@ -234,6 +228,12 @@ Plug 'petobens/poet-v'
 
 " -- mongo
 Plug 'kopecmaciej/vi-mongo.nvim'
+
+" -- git-conflicts
+Plug 'akinsho/git-conflict.nvim'
+
+" -- lab
+Plug '0x100101/lab.nvim', { 'do': 'cd js && npm ci' }
 call plug#end()
 
 colorscheme tokyonight
@@ -244,3 +244,10 @@ EOF
 
 " There is a reason why this is at the end of the file
 hi Conceal guifg=#949494
+
+" if v:vim_did_enter
+"   call AutoTelescope()
+" else
+"   au VimEnter * call AutoTelescope()
+" endif
+

@@ -1,5 +1,5 @@
 require("fuzzyfinder");
-require("zen");
+-- require("zen");
 require("neckpain");
 require("statusline");
 require("indent-line");
@@ -12,3 +12,5 @@ require("cmp");
 require("completion");
 require("debugger");
 require("pairs");
+require("conflicts");
+require("lab-runner");

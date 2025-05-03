@@ -5,5 +5,12 @@ require("no-neck-pain").setup {
   },
   buffers = {
     setNames = true,
+    bo = {
+      filetype = "md",
+    },
+    wo = {
+      cursorline = true,
+      relativenumber = true,
+    }
   },
 }

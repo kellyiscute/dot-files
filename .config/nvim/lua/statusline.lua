@@ -1,8 +1,8 @@
 local player_exists = false;
 
 local function player()
-  local status = vim.system({ "playerctl", "-p", "spotify", "status" }, { text = true }):wait()
-  local title = vim.system({ "playerctl", "-p", "spotify", "metadata", "title" }, { text = true }):wait()
+  local status = vim.system({ "playerctl", "-p", "mpd", "status" }, { text = true }):wait()
+  local title = vim.system({ "playerctl", "-p", "mpd", "metadata", "title" }, { text = true }):wait()
 
   player_exists = status['stdout'] ~= ''
 
@@ -50,13 +50,13 @@ require("lualine").setup {
         previous_button,
         separator = " ",
         on_click = function ()
-          vim.cmd("silent !playerctl -p spotify previous")
+          vim.cmd("silent !playerctl -p mpd previous")
         end,
       },
       {
         player,
         on_click = function ()
-          vim.cmd("silent !playerctl -p spotify play-pause")
+          vim.cmd("silent !playerctl -p mpd play-pause")
         end,
         padding = { right = 0 },
         separator = "",
@@ -65,7 +65,7 @@ require("lualine").setup {
         next_button,
         separator = " ",
         on_click = function ()
-          vim.cmd("silent !playerctl -p spotify next")
+          vim.cmd("silent !playerctl -p mpd next")
         end
       },
     },

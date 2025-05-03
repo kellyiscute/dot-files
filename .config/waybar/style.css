@@ -146,7 +146,7 @@ widget #mpd {
   padding-left: 12px;
   padding-bottom: 4px;
   padding-right: 10px;
-  margin-right: 0px;
+  margin-right: 12px;
   color: #E5D9F2;
   background: alpha(#F5EFFF, 0.1);
   border-top: 2px solid @mpd;
