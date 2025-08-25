@@ -234,6 +234,7 @@ Plug 'akinsho/git-conflict.nvim'
 
 " -- lab
 Plug '0x100101/lab.nvim', { 'do': 'cd js && npm ci' }
+
 call plug#end()
 
 colorscheme tokyonight

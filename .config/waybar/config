@@ -2,8 +2,8 @@
   "layer": "top",
   "position": "top",
   "height": 15,
-  "spacing": 4,
-  "margin": "0 0 0 0",
+  "spacing": 0,
+  "margin": "5 15 0 15",
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/window"
@@ -12,7 +12,7 @@
   "modules-right": [
     "tray",
     "idle_inhibitor",
-    "pulseaudio", "bluetooth", "network", "cpu", "memory", "temperature", "clock"
+    "pulseaudio", "bluetooth", "cpu", "memory", "temperature", "clock"
   ],
   "hyprland/window": {
     "format": "<span color=\"#DDDDDD\" font-size=\"150%\"></span> {}",
