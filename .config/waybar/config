@@ -12,6 +12,7 @@
   "modules-right": [
     "tray",
     "idle_inhibitor",
+    "custom/home",
     "pulseaudio", "bluetooth", "cpu", "memory", "temperature", "clock"
   ],
   "hyprland/window": {
@@ -117,6 +118,11 @@
     "format": "{icon}",
     "tooltip": "{time} {power} {capacity}%",
     "format-icons": ["", "", "", "", ""]
+  },
+  "custom/home": {
+    "exec": "~/.config/waybar/scripts/home-states.sh",
+    // "exec-if": "op whoami",
+    "interval": 10,
   },
   "network": {
     "interval": 10,

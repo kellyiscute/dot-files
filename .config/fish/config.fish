@@ -28,3 +28,5 @@ set -gx QT_QPA_PLATFORMTHEME qt5ct
 set -gx MPD_HOST "/home/kelly/.mpd/socket"
 
 alias waybar-reload="killall -SIGUSR2 waybar"
+alias wechat="screen -dmS wechat firejail --appimage --profile=~/.config/firejail/WeChatLinux_x86_64.AppImage.profile ~/Downloads/WeChatLinux_x86_64.AppImage"
+alias remote="hyprctl -i 0 keyword monitor DP-2, disable"

@@ -69,7 +69,7 @@ window#waybar {
 #clock,
 #cpu,
 #bluetooth,
-#network,
+#custom-home,
 #memory,
 #pulseaudio,
 #temperature,
@@ -239,7 +239,8 @@ widget #bluetooth.off {
 widget #bluetooth.disabled {
   opacity: 0.5;
 }
-widget #network {
+/* widget #network { */
+widget #custom-home {
   color: @network;
   border-top-color: alpha(@network, 0.5);
 }
