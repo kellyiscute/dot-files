@@ -1,0 +1,29 @@
+%YAML 1.3
+---
+- MouseGesture: Mouse Down-right
+- Execute: [playerctl, next]
+...
+---
+- And:
+  - MouseGesture: Mouse Up-right
+- Execute: [playerctl, play-pause]
+...
+---
+- MouseGesture: Mouse Down-left
+- Execute: [playerctl, previous]
+...
+---
+- MouseGesture: Mouse Right
+- Execute: [swaymsg, move, right]
+- Execute: [hyprctl, dispatch, movewindow, r]
+...
+---
+- MouseGesture: Mouse Left
+- Execute: [swaymsg, move, left]
+- Execute: [hyprctl, dispatch, movewindow, l]
+...
+---
+- MouseGesture: Mouse Down
+- Execute: [swaymsg, kill]
+- Execute: [hyprctl, dispatch, killactive]
+...

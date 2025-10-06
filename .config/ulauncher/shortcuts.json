@@ -1,0 +1,22 @@
+{
+    "78c7bee6-6249-415a-859e-7909c8f037b9": {
+        "id": "78c7bee6-6249-415a-859e-7909c8f037b9",
+        "name": "aur",
+        "keyword": "aur",
+        "cmd": "https://aur.archlinux.org/packages?K=%s",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1734536111.031891
+    },
+    "f1c21fd6-9e1c-46ce-8e6c-7132182f9d4c": {
+        "id": "f1c21fd6-9e1c-46ce-8e6c-7132182f9d4c",
+        "name": "Pacman",
+        "keyword": "pkg",
+        "cmd": "https://archlinux.org/packages/?q=%s",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1734536137.3728707
+    }
+}

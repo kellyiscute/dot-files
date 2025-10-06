@@ -14,6 +14,11 @@ set cursorline
 
 " use bun
 let g:node_host_prog = '/home/kelly/.bun/bin/bun'
+if ($TMUX != "")
+  let g:clipboard = "tmux"
+else
+  let g:clipboard = "wl-copy"
+endif
 
 " There used to be a bug with space as leader. I don't know if it's fixed now.
 nnoremap <SPACE> <Nop>
