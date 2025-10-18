@@ -25,14 +25,22 @@
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
 # monitor=,preferred,auto,auto
+{{#laptop}}
 monitor=eDP-1, 2256x1504@60, 0x0, 1.6
+{{/laptop}}
+
+{{^laptop}}
 monitor=DP-2, 2560x1440@165, 0x0, 1
 monitor=DP-1, 2560x1440@165, 2560x0, 1
 # monitor=DP-3, 2560x1440@170, 5120x0, 1
+{{/laptop}}
 
+{{^laptop}}
 workspace = 1, monitor:DP-1, on-created-empty:kitty, default:true
 # workspace = 2, monitor:DP-3, on-created-empty:telegram-desktop
 workspace = 2, monitor:DP-2
+{{/laptop}}
+
 workspace = special:email, on-created-empty:thunderbird
 
 ###################
@@ -82,7 +90,6 @@ exec = 1password --silent
 
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
-env = QT_QPA_PLATFORMTHEME,hyprqt6engine
 
 
 #####################
@@ -293,15 +300,10 @@ bind = $mainMod SHIFT, a, exec, slurp | grim -g - - | swappy -f - -o - | wl-copy
 binde = , XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
 # Example volume button that will activate even while an input inhibitor is active
 bindl = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-bindl = , XF86AudioMute, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0
 
 # Controling volume with mouse
 bind = $mainMod, mouse_down, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+
 bind = $mainMod, mouse_up, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
-
-# Brightness
-bindl = , XF86MonBrightnessUp, exec, brightnessctl s 10%+
-bindl = , XF86MonBrightnessDown, exec, brightnessctl s 10%-
 
 # MPD
 bind = $mainMod, p, exec, mpc toggle

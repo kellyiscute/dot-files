@@ -74,6 +74,7 @@ window#waybar {
 #pulseaudio,
 #temperature,
 #mpd,
+#battery,
 #mpris {
   background: rgba(24, 12, 68, 0.8);
   font-family: monospace;

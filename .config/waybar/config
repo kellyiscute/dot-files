@@ -11,9 +11,8 @@
   "modules-center": ["mpd","mpris"],
   "modules-right": [
     "tray",
-    "idle_inhibitor",
     // "custom/home",
-    "pulseaudio", "bluetooth", "cpu", "memory", "temperature", "clock"
+    "pulseaudio", "bluetooth", "cpu", "memory", "clock", "battery"
   ],
   "hyprland/window": {
     "format": "<span color=\"#DDDDDD\" font-size=\"150%\"></span> {}",
@@ -94,7 +93,7 @@
     "interval": 2,
     "min-length": 6,
     "format": " {usage}%",
-    "on-click": "alacritty -e btop",
+    "on-click": "kitty -e btop",
     "tooltip": true
   },
   "memory": {
@@ -115,7 +114,7 @@
   },
   "battery": {
     "align": 0,
-    "format": "{icon}",
+    "format": "{icon} {capacity}%",
     "tooltip": "{time} {power} {capacity}%",
     "format-icons": ["", "", "", "", ""]
   },
@@ -149,7 +148,7 @@
   },
   "pulseaudio": {
     "scroll-step": 1,
-    "format": "{icon}  {volume}% {format_source}",
+    "format": "{icon} {volume}%",
     "format-bluetooth": "{icon} {volume}% {format_source}",
     "format-bluetooth-muted": "{icon}  {format_source}",
     "format-muted": " {format_source}",
@@ -168,7 +167,7 @@
   },
   "clock": {
     "interval": 1,
-    "format": " {:%m/%d  %H:%M:%S}",
+    "format": " {:%H:%M:%S}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%a, %d %b %Y}"
   }

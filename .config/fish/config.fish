@@ -1,9 +1,9 @@
+set -gx PATH $PATH /home/kelly/.cargo/bin
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
 thefuck --alias | source
-set -gx PATH $PATH /home/kelly/.cargo/bin
 set -gx PATH $PATH /opt/flutter/bin
 set -gx PATH $PATH /opt/tabby-1.0.197-linux-x64
 set -gx PATH $PATH /opt/thunderbird
