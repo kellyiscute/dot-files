@@ -14,3 +14,4 @@ require("debugger");
 require("pairs");
 require("conflicts");
 require("lab-runner");
+require("claude");

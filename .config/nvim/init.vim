@@ -240,6 +240,9 @@ Plug 'akinsho/git-conflict.nvim'
 " -- lab
 Plug '0x100101/lab.nvim', { 'do': 'cd js && npm ci' }
 
+" -- claude code
+Plug 'greggh/claude-code.nvim'
+
 call plug#end()
 
 colorscheme tokyonight
