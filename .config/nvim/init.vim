@@ -243,6 +243,13 @@ Plug '0x100101/lab.nvim', { 'do': 'cd js && npm ci' }
 " -- claude code
 Plug 'greggh/claude-code.nvim'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'nvim-neotest/neotest'
+Plug 'arthur944/neotest-bun'
+
 call plug#end()
 
 colorscheme tokyonight

@@ -12,7 +12,7 @@
   "modules-right": [
     "tray",
     // "custom/home",
-    "pulseaudio", "bluetooth", "cpu", "memory", "clock", "battery"
+    "idle_inhibitor", "pulseaudio", "bluetooth", "cpu", "memory", "clock", "battery"
   ],
   "hyprland/window": {
     "format": "<span color=\"#DDDDDD\" font-size=\"150%\"></span> {}",
@@ -116,7 +116,8 @@
     "align": 0,
     "format": "{icon} {capacity}%",
     "tooltip": "{time} {power} {capacity}%",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": ["", "", "", "", ""],
+    "format-charging": "󰂄 {capacity}%",
   },
   "custom/home": {
     "exec": "~/.config/waybar/scripts/home-states.sh",

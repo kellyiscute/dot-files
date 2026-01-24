@@ -14,16 +14,13 @@
 ...
 ---
 - MouseGesture: Mouse Right
-- Execute: [swaymsg, move, right]
 - Execute: [hyprctl, dispatch, movewindow, r]
 ...
 ---
 - MouseGesture: Mouse Left
-- Execute: [swaymsg, move, left]
 - Execute: [hyprctl, dispatch, movewindow, l]
 ...
 ---
 - MouseGesture: Mouse Down
-- Execute: [swaymsg, kill]
 - Execute: [hyprctl, dispatch, killactive]
 ...
