@@ -29,8 +29,8 @@ set -gx QT_QPA_PLATFORMTHEME qt5ct
 set -gx MPD_HOST "/home/kelly/.mpd/socket"
 
 function setProxy
-  local httpProxy=http://127.0.0.1:7897
-  local socksProxy=socks5://127.0.0.1:7897
+  set httpProxy http://127.0.0.1:7897
+  set socksProxy socks5://127.0.0.1:7897
 
   set -gx ALL_PROXY $socksProxy
   set -gx SOCKS_PROXY $socksProxy
