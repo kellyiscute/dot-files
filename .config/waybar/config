@@ -49,7 +49,7 @@
     "on-click-right": "mpc next"
   },
   "mpris": {
-    "player": "spotify",
+    // "player": "spotify",
     "interval": 1,
     "format": "{player_icon}  {status_icon} {title}",
     "title-len": 15,

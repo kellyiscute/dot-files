@@ -9,10 +9,12 @@ set -gx PATH $PATH /opt/flutter/bin
 set -gx PATH $PATH /opt/tabby-1.0.197-linux-x64
 set -gx PATH $PATH /opt/thunderbird
 set -gx PATH $PATH /home/kelly/go/bin
+set -gx PATH $PATH /home/kelly/.local/bin
+set -gx PATH $PATH /home/kelly/.dev/flutter/bin/
 set -g fish_key_bindings fish_vi_key_bindings
 set -gx CHROME_EXECUTABLE /usr/bin/google-chrome-stable
 set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
-set -gx PATH $PATH /home/kelly/.local/bin
+set -gx EDITOR nvim
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
@@ -29,8 +31,8 @@ set -gx QT_QPA_PLATFORMTHEME qt5ct
 set -gx MPD_HOST "/home/kelly/.mpd/socket"
 
 function setProxy
-  set httpProxy http://127.0.0.1:7897
-  set socksProxy socks5://127.0.0.1:7897
+  set httpProxy http://192.168.10.1:7891
+  set socksProxy socks5://192.168.10.1:7891
 
   set -gx ALL_PROXY $socksProxy
   set -gx SOCKS_PROXY $socksProxy
@@ -58,6 +60,18 @@ function showProxy
   echo "HTTP_PROXY: $HTTP_PROXY"
   echo "HTTPS_PROXY: $HTTPS_PROXY"
 end
+
+function ship
+  argparse "t/to=" -- $argv
+  set -q _flag_to; or set _flag_to "main"
+
+  git fetch
+  set prLink $(gh pr create --fill --base $_flag_to | tail -n 1)
+  echo $prLink
+  wl-copy $prLink
+end
+
+zoxide init fish | source
 
 alias waybar-reload="killall -SIGUSR2 waybar"
 alias wechat="screen -dmS wechat firejail --appimage --profile=~/.config/firejail/WeChatLinux_x86_64.AppImage.profile ~/apps/WeChatLinux_x86_64.AppImage"

@@ -14,42 +14,6 @@ null_ls.setup({
 
 require("mason-lspconfig").setup({
   automatic_enable = true,
-	-- handlers = {
-	-- 	function(server_name)
-	-- 		local opts = {
-	-- 			capabilities = capabilities,
-	-- 			on_attach = function(client, bufnr)
-	-- 				if client.server_capabilities.documentSymbolProvider then
-	-- 					navic.attach(client, bufnr)
-	-- 				end
-	-- 			end,
-	-- 		}
-
-	-- 		if server_name == "ts_ls" then
-	-- 			opts.init_options = {
-	-- 				maxTsServerMemory = 10240,
-	-- 				preferences = {
-	-- 					typescript = {
-	-- 						format = {
-	-- 							insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets = false,
-	-- 							insertSpaceAfterOpeningAndBeforeClosingEmptyBraces = true,
-	-- 							insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces = true,
-	-- 							insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = true,
-	-- 						},
-	-- 						inlayHints = {
-	-- 							parameterNames = { enabled = true },
-	-- 						},
-	-- 						enablePromptUseWorkspaceTsdk = true,
-	-- 					},
-	-- 				},
-	-- 			}
-	-- 		elseif server_name == "yamlls" then
-	-- 			opts.settings = 
-	-- 		end
-
-	-- 		require("lspconfig")[server_name].setup(opts)
-	-- 	end,
-	-- },
 })
 
 vim.lsp.config("ts_ls", {
@@ -95,8 +59,9 @@ vim.lsp.config("yamlls", {
 -- dart language server
 vim.lsp.config("dartls", {
 	capabilities = capabilities,
-	cmd = { "dart", "language-server", "--protocol=lsp" },
+	cmd = { "dart", "language-server", "--lsp" },
 	filetypes = { "dart" },
+  root_markers = { "pubspec.yaml", "analysis_options.yaml", ".dartignore", ".git" },
 	init_options = {
 		closingLabels = true,
 		flutterOutline = true,
@@ -116,3 +81,4 @@ vim.lsp.config("dartls", {
 		end
 	end,
 })
+vim.lsp.enable("dartls")

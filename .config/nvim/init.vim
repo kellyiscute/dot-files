@@ -255,7 +255,8 @@ call plug#end()
 colorscheme tokyonight
 
 lua << EOF
-  require("init");
+  local init = require("init")
+  init.setup()
 EOF
 
 " There is a reason why this is at the end of the file

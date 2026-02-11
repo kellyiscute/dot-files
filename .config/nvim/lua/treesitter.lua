@@ -1,4 +1,6 @@
-require'nvim-treesitter.configs'.setup {
+local parsers = require('nvim-treesitter.parsers')
+
+require 'nvim-treesitter.config'.setup {
   highlight = {
     enable = true,
   },
@@ -6,6 +8,11 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   },
 }
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function() pcall(vim.treesitter.start) end,
+})
 
 -- filetype detection for hypr
 vim.filetype.add({
