@@ -1,279 +1,166 @@
-/*
- * Author: L. Aniva
- *
- * The central theme of this config is the "stars on a nightsky" effect. Each
- * module doesn't have a background (however dark) and floats on top of the
- * dark-themed wallpaper like stars.
- *
- * The theme is tuned to 3840x2160 screen sizes with horizontal waybar. Some
- * tuning of font sizes may be needed on smaller screens.
- *
- * Credit: Code Breaker for inspiring this colour palette
- */
-
-@define-color window        #eeeeee;
-@define-color window_border rgba(80%, 80%, 80%, 0.7);
-
-@define-color workspace                 #bbbbbb;
-@define-color workspace_bg              transparent;
-@define-color workspace_active          #eeeeee;
-@define-color workspace_active_bg alpha(#64727D, 0.5);
-
-/* @define-color mpd rgba(88%, 91%, 88%, 0.7); */
-
-@define-color tray_background rgba(80%, 80%, 80%, 0.1);
-@define-color tray                 #c9cbff;
-@define-color keyboard             #f2cdcd;
-@define-color language             #e8a2af;
-@define-color idle_inhibitor       #f28fad;
-@define-color audio                #fae3b0;
-@define-color backlight            #f8bd96;
-@define-color bluetooth            #caa9c7;
-@define-color network              #bd93f9;
-@define-color cpu                  #96cdfb;
-@define-color memory               #88bbeb;
-@define-color temperature          #ddb6f2;
-@define-color temperature_critical #ff6666;
-@define-color battery              #b6b2b3;
-@define-color clock                #abe9b3;
-@define-color user                 #89dceb;
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "MapleMono-NF-CN-Regular", monospace;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 0;
+}
 
 window#waybar {
-  border-radius: 15px;
   background: transparent;
+  color: #cdd6f4;
 }
 
-/* Do not use * selector since it modifies the menus. */
+/* --- 核心胶囊样式 --- */
+#workspaces,
 #window,
-#workspaces {
-  font-family: monospace;
-  font-size: 15px;
-  min-height: 15px;
-  padding: 5px 10px;
-  margin-top: 1px;
-  margin-bottom: 0px;
-  border: none;
-  background: rgba(24, 12, 68, 0.8);
-}
-
-#workspaces {
-  border-radius: 15px 0 0 15px;
-}
-
-#tray,
-#idle_inhibitor,
-#keyboard-state,
-#language,
-#user,
-#backlight,
 #clock,
-#cpu,
-#bluetooth,
-#custom-home,
-#memory,
+#tray,
+#mpris,
 #pulseaudio,
-#temperature,
-#mpd,
+#bluetooth,
 #battery,
-#mpris {
-  background: rgba(24, 12, 68, 0.8);
-  font-family: monospace;
-  font-size: 15px;
-  min-height: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 2px;
-  margin-top: 1px;
-  margin-bottom: 0px;
-  margin-left: 3px;
-  border: none;
-  border-radius: 15px;
-  border-top: 3px solid;
+#cpu,
+#memory,
+#temperature {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 6px 18px;
+  margin: 5px 4px;
+  border-radius: 18px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Left */
-widget #window {
-  font-family: "Noto Sans";
-  color: @window;
-  /* Three different styles */
-  border-top: none;
-  border-radius: 0 15px 15px 0;
-  /*
-	border-top: 2px dotted @window_border;
-	border-radius: 0;
-	*/
-  /*
-	border-right: 2px solid @window_border;
-	border-radius: 30;
-	*/
-  /*
-	border-left: 2px solid @window_border;
-	border-right: 2px solid @window_border;
-	border-radius: 5;
-	 */
-  background: rgba(24, 12, 68, 0.8);
-  margin-left: 0;
-  /*
-  padding-left: 5px;
-  padding-right: 15px;
-  */
-}
-#workspaces label {
-  font-family: monospace;
-  font-size: 15px;
-  min-width: 15px;
-  padding: 0 0 0 0;
-  /* Ensure the symbols are much bigger */
-  margin: -6 -6 -6 -6;
+/* --- 左侧 Workspaces --- */
+#workspaces {
+  padding: 10px 11px 10px 6px;
+  margin-left: 10px;
 }
 #workspaces button {
-  color: @workspace;
-  background: @workspace_bg;
-  margin: 0 0 0 0;
-  padding-top: 10px;
-  border-radius: 5;
+  padding: 0 6px;
+  color: #585b70;
 }
 #workspaces button.active {
-  color: @workspace_active;
-  background: @workspace_active_bg;
-  margin: 0 0 0 0;
-  padding-top: 10px;
-  border-radius: 5;
+  color: #cba6f7;
 }
-#workspaces button.hidden button.urgent {
-  color: #0000ff;
-  background: @workspace_active_bg;
-  margin: 0 0 0 0;
-  padding-top: 10px;
-  border-radius: 5;
+#workspaces button:hover {
+  background: transparent;
+  color: #f5c2e7;
+  box-shadow: none;
 }
 
-
-@define-color mpd alpha(#A294F9, 0.7);
-
-/* Centre */
-widget #mpd {
-  font-family: "Noto Sans";
-  padding-left: 12px;
-  padding-bottom: 4px;
-  padding-right: 10px;
-  margin-right: 12px;
-  color: #E5D9F2;
-  border-top: 2px solid @mpd;
-}
-
-@define-color mpris alpha(#A294F9, 0.7);
-widget #mpris {
-  font-family: "Noto Sans";
-  padding-left: 12px;
-  padding-bottom: 4px;
-  padding-right: 13px;
-  margin-right: 10px;
-  color: #E5D9F2;
-  border-top: 2px solid @mpris;
-}
-
-/* Right */
-widget #tray {
-  /*
-	border-left:  2px solid @tray;
-	border-right: 2px solid @tray;
-	min-width: 5px;
-  background: @tray_background;
-	border-radius: 20;*/
+/* --- 窗口标题 --- */
+#window {
+  color: #bac2de;
+  background: #313244;
+  margin-right: 20px;
   padding: 0 15px;
-  color: @tray;
-  border-top: 2px dotted alpha(@tray, 0.5);
 }
 
-widget #idle_inhibitor.activated {
-  min-width: 25px;
-  color: @idle_inhibitor;
-  border-top-color: alpha(@idle_inhibitor, 0.5);
+/* --- 中间 MPRIS (播放器) --- */
+#mpris {
+  color: #cba6f7;
+  background: #1e1e2e;
 }
-widget #idle_inhibitor.deactivated {
-  min-width: 25px;
-  color: alpha(@idle_inhibitor, 0.5);
-  border-top-color: alpha(@idle_inhibitor, 0.5);
-}
-widget #keyboard-state {
-  color: @keyboard;
-  border-top-color: alpha(@keyboard, 0.5);
-}
-/* Ensure toggling doesn't affect layout */
-#keyboard-state label {
-  opacity: 0.5;
-  min-width: 80px;
-}
-#keyboard-state label.locked {
-  opacity: 1;
-  min-width: 80px;
+#mpris.paused {
+  color: #9399b2;
+  font-style: italic;
 }
 
-widget #language {
-  color: @language;
-  border-top-color: alpha(@language, 0.5);
-}
-widget #pulseaudio {
-  color: @audio;
-  border-top-color: alpha(@audio, 0.5);
-}
-widget #backlight {
-  color: @backlight;
-  border-top-color: alpha(@backlight, 0.5);
-}
-widget #bluetooth {
-  color: @bluetooth;
-  border-top-color: alpha(@bluetooth, 0.5);
-}
-widget
-  #bluetooth.on
-  #bluetooth.connected
-  #bluetooth.discoverable
-  #bluetooth.discovering
-  #bluetooth.pairable {
-  opacity: 1;
-}
-widget #bluetooth.off {
-  opacity: 0.5;
-}
-widget #bluetooth.disabled {
-  opacity: 0.5;
-}
-/* widget #network { */
-widget #custom-home {
-  color: @network;
-  border-top-color: alpha(@network, 0.5);
-}
-widget #cpu {
-  color: @cpu;
-  border-top-color: alpha(@cpu, 0.5);
-}
-widget #memory {
-  color: @memory;
-  border-top-color: alpha(@memory, 0.5);
-}
-widget #temperature {
-  min-width: 60px;
-  color: @temperature;
-  border-top-color: alpha(@temperature, 0.5);
-}
-widget #temperature.critical {
-  min-width: 60px;
-  color: @temperature_critical;
-  border-top-color: alpha(@temperature, 0.5);
-}
-widget #battery {
-  color: @battery;
-  border-top-color: alpha(@battery, 0.5);
-}
-widget #clock {
-  color: @clock;
-  border-top-color: alpha(@clock, 0.5);
+/* --- 中间时钟 --- */
+#clock {
+  color: #f9e2af;
+  background: #11111b;
+  padding: 6px 20px;
 }
 
-widget #user {
-  color: @user;
-  border-top-color: alpha(@user, 0.5);
-  font-family: "Noto Serif";
+/* --- 托盘 --- */
+#tray {
+  background: #1e1e2e;
+  margin-right: 8px;
+  padding: 6px 18px;
+}
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #f38ba8;
+}
+
+/* --- 硬件组视觉合并 (CPU-MEM-TEMP) --- */
+/* 注意：这里通过 margin-right: 0 和 margin-left: 0 将它们粘在一起 */
+/* 并且去掉了连接处的圆角 */
+
+#cpu {
+  margin-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 6px;
+  color: #eba0ac;
+}
+
+#memory {
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #a6e3a1;
+}
+
+#temperature {
+  margin-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 6px;
+  color: #89dceb;
+}
+
+/* --- 其他右侧模块 --- */
+#pulseaudio {
+  color: #fab387;
+}
+
+#battery {
+  color: #a6e3a1;
+  margin-right: 10px;
+}
+#battery.charging {
+  color: #ffffff;
+  background-color: #a6e3a1;
+}
+#battery.warning:not(.charging) {
+  background-color: #f38ba8;
+  color: #1e1e2e;
+}
+
+/* --- 网络模块 --- */
+#network {
+  background: #1e1e2e;
+  color: #bd93f9; /* 紫色，对应你之前的配置 */
+  padding: 6px 16px;
+  margin: 4px 3px;
+  border-radius: 16px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+#network.disconnected {
+  color: #f38ba8; /* 掉线变红 */
+}
+
+/* --- 蓝牙模块 (确保它也有样式) --- */
+#bluetooth {
+  background: #1e1e2e;
+  color: #89b4fa; /* 蓝色 */
+  padding: 6px 16px;
+  margin: 4px 3px;
+  border-radius: 16px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* 蓝牙关闭时变暗一点 */
+#bluetooth.disabled, #bluetooth.off {
+  color: #6c7086;
 }
