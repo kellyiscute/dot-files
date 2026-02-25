@@ -23,13 +23,51 @@ window#waybar {
 #battery,
 #cpu,
 #memory,
+#custom-notification,
+#network,
+#idle_inhibitor,
 #temperature {
   background: #1e1e2e;
   color: #cdd6f4;
   padding: 6px 18px;
-  margin: 5px 4px;
+  margin: 5px 5px;
   border-radius: 18px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease; /* 平滑过渡效果 */
+  border: 1px solid transparent;
+}
+
+/* 统一的 Hover 效果 */
+#clock:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#wireplumber:hover,
+#custom-media:hover,
+#mode:hover,
+#idle_inhibitor:hover,
+#scratchpad:hover,
+#mpris:hover,
+#custom-notification:hover {
+    background: #313244;           /* 背景微亮 (Surface0) */
+    color: #89b4fa;                /* 文字/图标变亮蓝 */
+    border: 1px solid #89b4fa;     /* 加上淡蓝色细边框 */
+}
+
+/* 基础样式 (已包含你之前的透明边框逻辑) */
+#idle_inhibitor {
+    color: #cdd6f4;
+}
+
+/* 激活状态 (防止睡眠开启时) */
+#idle_inhibitor.activated {
+    color: #fab387;            /* 核心颜色：Peach 橙 */
+    box-shadow: 0 0 10px rgba(250, 179, 135, 0.3); /* 淡淡的橙色发光效果 */
+}
+
+#idle_inhibitor.activated:hover {
+    color: #fab387;            /* 核心颜色：Peach 橙 */
+    border: 1px solid #fab387;     /* 加上淡橙色细边框 */
+    box-shadow: 0 0 10px rgba(250, 179, 135, 0.3); /* 淡淡的橙色发光效果 */
 }
 
 /* --- 左侧 Workspaces --- */
@@ -40,6 +78,7 @@ window#waybar {
 #workspaces button {
   padding: 0 6px;
   color: #585b70;
+  transition: color 0.2s ease;
 }
 #workspaces button.active {
   color: #cba6f7;
@@ -138,12 +177,7 @@ window#waybar {
 
 /* --- 网络模块 --- */
 #network {
-  background: #1e1e2e;
   color: #bd93f9; /* 紫色，对应你之前的配置 */
-  padding: 6px 16px;
-  margin: 4px 3px;
-  border-radius: 16px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 #network.disconnected {
@@ -163,4 +197,16 @@ window#waybar {
 /* 蓝牙关闭时变暗一点 */
 #bluetooth.disabled, #bluetooth.off {
   color: #6c7086;
+}
+
+/* 当有未读通知时的状态（可选，如果你想让它更醒目） */
+/* 注意：这需要 swaync 输出特定的 class，如果基础配置没显示，只需通用样式即可 */
+#custom-notification.notification {
+    color: #f38ba8;            /* 有通知时变为柔和的红色 */
+}
+
+/* 当处于免打扰模式时 */
+#custom-notification.dnd-none,
+#custom-notification.dnd-notification {
+    color: #6c7086;            /* 免打扰时图标变灰 */
 }

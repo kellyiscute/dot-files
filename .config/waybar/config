@@ -13,6 +13,8 @@
   ],
   "modules-right": [
     "tray",
+    "custom/notification",
+    "idle_inhibitor",
     "pulseaudio",
     "bluetooth",
     "network",
@@ -27,16 +29,10 @@
     "all-outputs": true,
     "format": "{icon}",
     "format-icons": {
-      "default": "",
+      "default": "",
       "active": "",
       "urgent": ""
     },
-    "persistent_workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": []
-    }
   },
 
   "hyprland/window": {
@@ -121,5 +117,28 @@
     "format-disconnected": "⚠ Disconnected",
     "tooltip-format": "{ifname} via {gwaddr} ({signalStrength}%)",
     "max-length": 20
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "󰅶",
+        "deactivated": "󰾪"
+    }
+  },
+
+  "custom/notification": {
+    "format": "{icon} {text}",
+    "format-icons": {
+        "notification": "󱅫",
+        "none": "󰂚",
+        "dnd-notification": "󱅫",
+        "dnd-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }

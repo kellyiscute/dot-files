@@ -1,0 +1,65 @@
+@define-color bg-macos rgba(25, 25, 25, 0.7); /* 半透明深色，模拟毛玻璃 */
+@define-color text-main #ffffff;
+@define-color text-dim  rgba(255, 255, 255, 0.5); /* 模拟 macOS 的副标题颜色 */
+
+* {
+    font-family: "SF Pro Display", "Inter", "monospace", sans-serif;
+}
+
+/* 通知卡片基础 */
+.notification {
+    background: @bg-macos;
+    padding: 10px; /* 缩小内边距 */
+    margin: 4px 0px; 
+    border-radius: 14px; /* macOS 经典的圆角弧度 */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* 极细边框 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* macOS 风格：应用名称（顶部极小字） */
+.notification-content .app-name {
+    font-size: 10px; /* 极小字体 */
+    font-weight: 500;
+    text-transform: uppercase; /* 大写化更有高级感 */
+    color: @text-dim;
+    margin-bottom: 2px;
+}
+
+/* 通知标题 */
+.notification-content .summary {
+    font-size: 13px; /* 缩小标题 */
+    font-weight: 600;
+    color: @text-main;
+    background: transparent;
+}
+
+/* 通知正文 */
+.notification-content .body {
+    font-size: 12px; /* 缩小正文 */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4; /* 增加行高，提升阅读舒适度 */
+}
+
+/* 时间戳 */
+.notification-content .time {
+    font-size: 10px;
+    color: @text-dim;
+}
+
+/* 侧边栏（控制中心） */
+.control-center {
+    background: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(20px); /* 如果你的环境支持背景虚化 */
+    border-radius: 18px;
+    margin: 10px;
+    padding: 12px;
+}
+
+/* 标题小组件样式 */
+.widget-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: @text-main;
+    margin: 10px;
+}
