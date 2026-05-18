@@ -14,10 +14,10 @@ hl.monitor({ output = "DP-3", mode = "2560x1440@165", position = "0x0", scale = 
 hl.workspace_rule({ workspace = "special:email", on_created_empty = "thunderbird" })
 hl.workspace_rule({ workspace = "special:im", on_created_empty = "telegram-desktop" })
 
-require("conf.general")
+require("conf.keybinds")
 require("conf.envs")
 require("conf.autostart")
+require("conf.general")
 require("conf.animations")
-require("conf.keybinds")
 require("conf.gestures")
 require("conf.windowRules")

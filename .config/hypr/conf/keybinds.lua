@@ -1,4 +1,4 @@
-local commands = require("commands")
+local commands = require("conf.commands")
 
 local vimMotions = {
   H = "l",
@@ -17,7 +17,7 @@ function m(...)
   for _, v in pairs(s) do
     result = result .. " + " .. v
   end
-  return commands.mainMod .. ...
+  return result
 end
 
 --- Return a key def with main mod + SHIFT
@@ -64,9 +64,9 @@ end
 hl.bind("F11", hl.dsp.window.fullscreen())
 
 -- moving with mouse
-hl.bind("mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(m("mouse:272"), hl.dsp.window.drag(), { mouse = true })
 -- resizing with mouse
-hl.bind("mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(m("mouse:273"), hl.dsp.window.resize(), { mouse = true })
 --#endregion
 
 --#region workspaces
