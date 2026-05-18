@@ -1,0 +1,6 @@
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
+hl.gesture({ fingers = 3, direction = "swipe", action = "resize", mods = ms() })
+hl.gesture({ fingers = 3, direction = "swipe", action = "move", mods = m() })
+hl.gesture({ fingers = 3, direction = "pinchin", action = "close", mods = m() })
+

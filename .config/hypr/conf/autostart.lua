@@ -1,0 +1,23 @@
+hl.on("hyprland.start", function()
+  hl.exec_cmd("nm-applet")
+  hl.exec_cmd("waybar")
+  hl.exec_cmd("GDK_BACKEND=wayland ulauncher --hide-window")
+  hl.exec_cmd("fcitx5")
+  -- Swaync is now managed by uwsm
+  -- hl.exec_cmd("swaync")
+  hl.exec_cmd("wayvnc 0.0.0.0")
+  hl.exec_cmd("solaar --window=hide")
+  hl.exec_cmd("XDG_MENU_PREFIX=arch- kbuildsycoca6")
+  hl.exec_cmd("/usr/lib/pam_kwallet_init")
+  hl.exec_cmd("hypridle")
+  hl.exec_cmd("clash-verge")
+
+  hl.exec_cmd("mpd")
+  hl.exec_cmd("mpdris2-rs")
+  hl.exec_cmd("1password --silent")
+  hl.exec_cmd("darkman set dark")
+
+  hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'Breeze-Dark'")
+  hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
+  hl.exec_cmd("gsettings set org.gnome.desktop.wm.preferences theme 'Breeze-Dark'")
+end)
