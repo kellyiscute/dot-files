@@ -143,10 +143,10 @@ Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
-Plug 'lambdalisue/battery.vim'
+" Plug 'lambdalisue/battery.vim'
 Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-fugitive'
-Plug 'lambdalisue/gina.vim'
+" Plug 'lambdalisue/gina.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'wakatime/vim-wakatime'
@@ -249,6 +249,8 @@ Plug 'arthur944/neotest-bun'
 
 Plug 'esmuellert/nvim-eslint'
 
+Plug 'folke/snacks.nvim'
+
 call plug#end()
 
 colorscheme tokyonight
@@ -300,10 +302,3 @@ EOF
 
 " There is a reason why this is at the end of the file
 hi Conceal guifg=#949494
-
-" if v:vim_did_enter
-"   call AutoTelescope()
-" else
-"   au VimEnter * call AutoTelescope()
-" endif
-

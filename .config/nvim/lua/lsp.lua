@@ -18,7 +18,7 @@ require("mason-lspconfig").setup({
 
 vim.lsp.config("ts_ls", {
   init_options = {
-		maxTsServerMemory = 10240,
+		maxTsServerMemory = 20480,
 		preferences = {
 			typescript = {
 				format = {
@@ -28,7 +28,10 @@ vim.lsp.config("ts_ls", {
 					insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = true,
 				},
 				inlayHints = {
-					parameterNames = { enabled = true },
+				  includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = true,
+          includeInlayVariableTypeHints = true,
 				},
 				enablePromptUseWorkspaceTsdk = true,
 			},
