@@ -85,7 +85,7 @@ nnoremap <silent> <F10> :FloatermNext<CR>
 nnoremap <silent> <F9> :FloatermPrev<CR>
 
 " telescope
- nnoremap <leader>S <cmd>Telescope treesitter<cr>
+nnoremap <leader>S <cmd>Telescope treesitter<cr>
 
 " player controls
 nnoremap <silent> <leader>pp :silent exec "!playerctl -p spotify play-pause"<CR>
