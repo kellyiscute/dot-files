@@ -31,7 +31,7 @@ hl.config({
   },
 
   binds = {
-    scroll_event_delay = 0
+    scroll_event_delay = 50
   },
 
   decoration = {

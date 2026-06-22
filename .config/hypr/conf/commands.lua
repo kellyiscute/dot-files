@@ -5,11 +5,13 @@ local lock = "1password --lock & loginctl lock-session"
 local browser = "brave"
 
 local M = {
+  mainMod = "SUPER",
   terminal = terminal,
+  tempTerm = terminal .. " --class=kitty-tmp",
   filemanager = filemanager,
+  spf = "kitty spf",
   menu = menu,
   lock = lock,
-  mainMod = "SUPER",
   browser = browser,
 
   opQuickAccess = "1password --quick-access",
@@ -21,7 +23,7 @@ local M = {
   },
   volControls = {
     up5 = "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
-    down5 = "set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    down5 = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
     up1 = "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+",
     down1 = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
     mute = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0",

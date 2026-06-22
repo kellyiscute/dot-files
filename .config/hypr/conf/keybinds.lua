@@ -39,14 +39,16 @@ end)
 
 -- apps
 hl.bind(m("Return"), hl.dsp.exec_cmd(commands.terminal))
+hl.bind(ms("Return"), hl.dsp.exec_cmd(commands.tempTerm))
 hl.bind(m("D"), hl.dsp.exec_cmd(commands.filemanager))
+hl.bind(ms("D"), hl.dsp.exec_cmd(commands.spf))
 hl.bind(m("Space"), hl.dsp.exec_cmd(commands.menu))
 hl.bind(ms("Space"), hl.dsp.exec_cmd(commands.opQuickAccess))
 hl.bind(m("B"), hl.dsp.exec_cmd(commands.browser))
 
 --#region windows
 -- actions
-hl.bind(ms("Q"), hl.dsp.window.kill())
+hl.bind(ms("Q"), hl.dsp.window.close())
 hl.bind(ms("F"), hl.dsp.window.float())
 hl.bind(m("TAB"), hl.dsp.window.cycle_next())
 
@@ -88,7 +90,7 @@ hl.bind(ms("DELETE"), hl.dsp.window.move({ workspace = "special:magic" }))
 hl.bind(m("i"), hl.dsp.workspace.toggle_special({ workspace = "im" }))
 hl.bind(ms("i"), hl.dsp.window.move({ workspace = "special:im" }))
 
-hl.bind(m("t"), hl.dsp.workspace.toggle_special("email"))
+hl.bind(ms("t"), hl.dsp.workspace.toggle_special("email"))
 --#endregion
 
 -- screenshot
@@ -96,20 +98,22 @@ hl.bind(ms("a"), hl.dsp.exec_cmd(commands.screenshot.region))
 hl.bind(ms("s"), hl.dsp.exec_cmd(commands.screenshot.window))
 
 -- brightness
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(commands.brightness.up))
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(commands.brightness.down))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(commands.brightness.up), { locked = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(commands.brightness.down), { locked = true })
 
 -- volume
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(commands.volControls.up5))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(commands.volControls.down5))
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd(commands.volControls.mute))
-hl.bind(m("mouse_down"), hl.dsp.exec_cmd(commands.volControls.up1))
-hl.bind(m("mouse_up"), hl.dsp.exec_cmd(commands.volControls.down1))
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(commands.volControls.up5), { locked = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(commands.volControls.down5), { locked = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(commands.volControls.mute), { locked = true })
+hl.bind(m("equal"), hl.dsp.exec_cmd(commands.volControls.up5), { locked = true })
+hl.bind(m("minus"), hl.dsp.exec_cmd(commands.volControls.down5), { locked = true, repeating = true })
+hl.bind(m("mouse_down"), hl.dsp.exec_cmd(commands.volControls.up1), { locked = true })
+hl.bind(m("mouse_up"), hl.dsp.exec_cmd(commands.volControls.down1), { locked = true })
 
 -- player
-hl.bind(m("p"), hl.dsp.exec_cmd(commands.playerctl.toggle))
-hl.bind(m("XF86AudioPlay"), hl.dsp.exec_cmd(commands.playerctl.toggle))
-hl.bind(m("comma"), hl.dsp.exec_cmd(commands.playerctl.prev))
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd(commands.playerctl.prev))
-hl.bind(m("period"), hl.dsp.exec_cmd(commands.playerctl.next))
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd(commands.playerctl.next))
+hl.bind(m("p"), hl.dsp.exec_cmd(commands.playerctl.toggle), { locked = true })
+hl.bind(m("XF86AudioPlay"), hl.dsp.exec_cmd(commands.playerctl.toggle), { locked = true })
+hl.bind(m("comma"), hl.dsp.exec_cmd(commands.playerctl.prev), { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd(commands.playerctl.prev), { locked = true })
+hl.bind(m("period"), hl.dsp.exec_cmd(commands.playerctl.next), { locked = true })
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd(commands.playerctl.next), { locked = true })
