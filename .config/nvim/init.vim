@@ -12,8 +12,6 @@ set relativenumber
 set updatetime=20
 set cursorline
 
-" use bun
-let g:node_host_prog = '/home/kelly/.bun/bin/bun'
 if ($TMUX != "")
   let g:clipboard = "tmux"
 else
@@ -28,10 +26,6 @@ hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
 hi CursorLineNr cterm=BOLD ctermbg=8
 hi Pmenu cterm=NONE ctermbg=Black ctermfg=Blue
 hi PmenuSel cterm=BOLD ctermbg=DarkGray ctermfg=Blue
-
-" Spotify
-let g:spotify_client_id = '0495bc14e11a455fb1ff2a2c2615dc9b'
-let g:spotify_client_secret = 'a085aaeddfb24520889b337043ebf6c6'
 
 " Syntax
 hi String ctermfg=DarkGreen
@@ -61,11 +55,8 @@ sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn
 sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo
 sign define DiagnosticSignHint text=󰌵 texthl=DiagnosticSignHint
 
-let g:localvimrc_ask=0
-let g:camelsnek_no_fun_allowed = 0 " Shorter alias for the above.
-let g:airline_theme = 'tokyonight'
+let g:camelsnek_no_fun_allowed = 0
 
-let g:airline_highlighting_cache = 1
 set winbar+=%{%v:lua.require'nvim-navic'.get_location()%}
 
 nmap <C-j> 4j
@@ -94,14 +85,7 @@ nnoremap <silent> <F10> :FloatermNext<CR>
 nnoremap <silent> <F9> :FloatermPrev<CR>
 
 " telescope
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>g <cmd>Telescope live_grep<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
-nnoremap <leader>S <cmd>Telescope treesitter<cr>
-nnoremap gr <cmd>Telescope lsp_references<cr>
-nnoremap gd <cmd>Telescope lsp_definitions<cr>
-nnoremap <leader>d <cmd>Telescope diagnostics<cr>
-nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
+ nnoremap <leader>S <cmd>Telescope treesitter<cr>
 
 " player controls
 nnoremap <silent> <leader>pp :silent exec "!playerctl -p spotify play-pause"<CR>
@@ -112,6 +96,7 @@ nnoremap <silent> <leader>pl :SpotifyPlaylist<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <leader>a <cmd>lua vim.lsp.buf.code_action()<cr>
 nnoremap fmt <cmd>lua vim.lsp.buf.format()<cr>
+nnoremap K <cmd>lua ShowDocOrDiag()<cr>
 
 " zen mode
 nnoremap <leader>z <cmd>NoNeckPain<CR>
@@ -137,168 +122,21 @@ endfunction
 " close-buf
 command! Q :Bdelete menu<CR>
 
-call plug#begin()
-
-Plug 'tpope/vim-surround'
-Plug 'voldikss/vim-floaterm'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'lambdalisue/battery.vim'
-Plug 'embear/vim-localvimrc'
-Plug 'tpope/vim-fugitive'
-" Plug 'lambdalisue/gina.vim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'folke/todo-comments.nvim'
-Plug 'wakatime/vim-wakatime'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'uarun/vim-protobuf'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'bkad/CamelCaseMotion'
-Plug 'brooth/far.vim'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'nicwest/vim-camelsnek'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'folke/tokyonight.nvim', { 'as': 'tokyonight' }
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-Plug 'lunarvim/Onedarker.nvim'
-Plug 'rafamadriz/neon'
-Plug 'github/copilot.vim'
-Plug 'Asheq/close-buffers.vim'
-Plug 'SmiteshP/nvim-navic'
-Plug 'simrat39/symbols-outline.nvim'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'ryanoasis/vim-devicons'
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'easymotion/vim-easymotion'
-
-Plug 'MunifTanjim/nui.nvim'
-Plug 'nvim-neo-tree/neo-tree.nvim'
-
-Plug 'f-person/git-blame.nvim'
-
-" Status line
-Plug 'nvim-lualine/lualine.nvim'
-
-" -- Treesitter
-Plug 'nvim-treesitter/nvim-treesitter-context'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'windwp/nvim-autopairs'
-
-" -- LSP and completion
-" -- LSP
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
-
-" -- Completion
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'petertriho/cmp-git'
-
-Plug 'nvim-telescope/telescope-ui-select.nvim'
-
-" -- Snippets
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-
-" -- Linter
-Plug 'nvimtools/none-ls.nvim'
-Plug 'nvimtools/none-ls-extras.nvim'
-"Plug 'mfussenegger/nvim-lint'
-
-" -- Formatter
-Plug 'mhartington/formatter.nvim'
-
-" -- Debugger
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-
-" -- Zen mode
-" Plug 'folke/zen-mode.nvim'
-Plug 'shortcuts/no-neck-pain.nvim'
-
-" -- Yuck - eww highlight
-Plug 'elkowar/yuck.vim'
-
-" -- Pretty input box
-Plug 'liangxianzhe/floating-input.nvim'
-
-Plug '~/Documents/spotify.nvim'
-Plug 'petobens/poet-v'
-
-" -- mongo
-Plug 'kopecmaciej/vi-mongo.nvim'
-
-" -- git-conflicts
-Plug 'akinsho/git-conflict.nvim'
-
-" -- lab
-Plug '0x100101/lab.nvim', { 'do': 'cd js && npm ci' }
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-neotest/nvim-nio'
-Plug 'nvim-neotest/neotest'
-Plug 'arthur944/neotest-bun'
-
-Plug 'esmuellert/nvim-eslint'
-
-Plug 'folke/snacks.nvim'
-
-call plug#end()
-
-colorscheme tokyonight
-
-lua << EOF
-  local init = require("init")
-  init.setup()
-  require('nvim-eslint').setup({
-    -- enable source maps to locate where failures are happening in vscode-eslint
-    handlers = {
-      -- get notified if the config file failed to load
-      ["eslint/noConfig"] = function(_, result)
-        vim.notify(result.message, vim.log.levels.WARN)
-        return {}
-      end,
-      -- reset diagnostics, useful with fix/format on save to clear stale diagnostics
-      ["workspace/diagnostic/refresh"] = function(_, _, ctx)
-        local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
-        local bufnr = vim.api.nvim_get_current_buf()
-        vim.diagnostic.reset(ns, bufnr)
-        return true
-      end,
-    },
-    settings = {
-      codeAction = {
-        disableRuleComment = {
-          enable = true,
-          location = 'separateLine',
-        },
-        showDocumentation = {
-          enable = true,
-        },
-      },
-      run = "onType",
-      quiet = false,
-      -- enable formatting
-      format = true,
-      -- had to force for my setup
-      useFlatConfig = true,
-      -- was having issues in a monorepo finding the config without this
-      workingDirectories = { mode = "auto" },
-      options = {
-        -- enable caching
-        cache = true,
-      },
-    },
-  })
-EOF
+" colorscheme tokyonight
 
 " There is a reason why this is at the end of the file
 hi Conceal guifg=#949494
+
+lua require("config.lazy")
+
+lua << EOF
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = '*',
+    callback = function() pcall(vim.treesitter.start) end,
+  })
+
+  -- filetype detection for hypr
+  vim.filetype.add({
+    pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+  })
+EOF

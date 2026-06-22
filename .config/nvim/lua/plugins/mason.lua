@@ -1,3 +1,5 @@
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 local tsls_conf = {
   init_options = {
     maxTsServerMemory = 20480,
@@ -22,6 +24,7 @@ local tsls_conf = {
 }
 
 local dartls_conf = {
+  capabilities = capabilities,
   cmd = { "dart", "language-server", "--lsp" },
   filetypes = { "dart" },
   root_markers = { "pubspec.yaml", "analysis_options.yaml", ".dartignore", ".git" },
@@ -82,7 +85,6 @@ return {
       "hyprls",
       "jsonls",
       "lua_ls",
-      "prettier",
       "qmlls",
       "vimls",
       "yamlls",
@@ -106,7 +108,6 @@ return {
     vim.lsp.enable("dartls")
   end,
   dependencies = {
-    "mason-org/mason.nvim",
     "neovim/nvim-lspconfig",
     {
       "mason-org/mason.nvim",

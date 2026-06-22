@@ -1,5 +1,11 @@
 return {
   {
+    "voldikss/vim-floaterm"
+  },
+  {
+    "brooth/far.vim"
+  },
+  {
     "wakatime/vim-wakatime",
   },
   {
@@ -35,5 +41,8 @@ return {
   },
   {
     "akinsho/git-conflict.nvim"
-  }
+  },
+  {
+    "MunifTanjim/nui.nvim",
+  },
 }

@@ -3,16 +3,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
     build = ":TSUpdate",
-    init = function()
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = '*',
-        callback = function() pcall(vim.treesitter.start) end,
-      })
-
-      -- filetype detection for hypr
-      vim.filetype.add({
-        pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-      })
+    config = function(_, opts)
+      local ts = require("nvim-treesitter")
+      ts.install(opts.ensure_installed)
     end,
     opts = {
       highlight = {
@@ -21,7 +14,16 @@ return {
       indent = {
         enable = true
       },
-    }
+      ensure_installed = {
+        "javascript", "typescript", "json", "toml", "vim", "go", "html", "lua", "json", "yaml",
+        "qmljs", "dart", "css", "scss", "fish", "bash", "zsh", "dockerfile", "vimdoc", "jsdoc", "java", "kotlin",
+        "hyprlang",
+        "nginx", "ini", "c", "cpp", "c_sharp", "caddy", "make", "markdown", "markdown_inline", "regex", "latex", "csv",
+        "dart", "desktop", "gitcommit", "gitignore", "gomod", "gosum", "gotmpl", "http", "json5", "jinja", "jq", "python",
+        "rust", "sql", "sway", "terraform", "tsx", "xml", "vue", "mermaid", "kitty", "helm", "graphql",
+        "norg", "typst", "svelte"
+      },
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -33,6 +35,6 @@ return {
     end,
     opts = {
       lookahead = true,
-    }
+    },
   }
 }
