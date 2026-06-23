@@ -36,8 +36,12 @@ return {
 	opts = {
 		options = {
 			disabled_filetypes = {
-				statusline = {},
+				statusline = {
+					"neo-tree",
+				},
 			},
+			section_separators = { left = "", right = "" },
+			component_separators = { left = "", right = "" },
 		},
 		extensions = { "neo-tree" },
 		sections = {
