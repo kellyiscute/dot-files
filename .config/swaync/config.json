@@ -1,7 +1,9 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
-  "positionX": "right",
+  "positionX": "center",
   "positionY": "top",
+  "control-center-positionX": "right",
+  "control-center-positionY": "top",
   "layer": "overlay",
   "control-center-margin-top": 10,
   "control-center-margin-bottom": 10,
@@ -31,12 +33,12 @@
   ],
   "widget-config": {
     "title": {
-      "text": "通知中心",
+      "text": "Notifications",
       "clear-all-button": true,
-      "button-text": "清空"
+      "button-text": "Clear All"
     },
     "dnd": {
-      "text": "免打扰"
+      "text": "Do Not Disturb"
     },
     "mpris": {
       "image-size": 96,

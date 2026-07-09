@@ -1,5 +1,5 @@
-return { 
-  "hrsh7th/nvim-cmp",
+return {
+	"hrsh7th/nvim-cmp",
 	version = false,
 	lazy = false,
 	dependencies = {
@@ -56,6 +56,11 @@ return {
 			sources = cmp.config.sources({
 				{ name = "git" },
 			}),
+		})
+		cmp.setup.filetype("terraform", {
+			completion = {
+				keyword_pattern = [[\%(\k\|\.\|"\)\+]],
+			},
 		})
 	end,
 }

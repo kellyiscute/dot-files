@@ -73,7 +73,6 @@ return {
 				"kitty",
 				"helm",
 				"graphql",
-				"norg",
 				"typst",
 				"svelte",
 			},

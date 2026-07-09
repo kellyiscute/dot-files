@@ -37,13 +37,13 @@ require("lazy").setup({
 vim.o.winborder = "rounded"
 
 function ShowDocOrDiag()
-	local lnum, cnum = unpack(vim.api.nvim_win_get_cursor(0))
-	local lineDiag = vim.diagnostic.get(0, { lnum = lnum - 1 })
-	for _, diag in pairs(lineDiag) do
-    if cnum >= diag.col and diag.end_col > cnum then
-      vim.diagnostic.open_float()
-      return
-    end
-	end
+	-- local lnum, cnum = unpack(vim.api.nvim_win_get_cursor(0))
+	-- local lineDiag = vim.diagnostic.get(0, { lnum = lnum - 1 })
+	-- for _, diag in pairs(lineDiag) do
+	--   if cnum >= diag.col and diag.end_col > cnum then
+	--     vim.diagnostic.open_float()
+	--     return
+	--   end
+	-- end
 	vim.lsp.buf.hover()
 end

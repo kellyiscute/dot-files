@@ -14,13 +14,13 @@
 ...
 ---
 - MouseGesture: Mouse Right
-- Execute: [hyprctl, dispatch, movewindow, r]
+- Execute: [hyprctl, dispatch, 'hl.dsp.window.move({ direction = "r" })']
 ...
 ---
 - MouseGesture: Mouse Left
-- Execute: [hyprctl, dispatch, movewindow, l]
+- Execute: [hyprctl, dispatch, 'hl.dsp.window.move({ direction = "l" })']
 ...
 ---
 - MouseGesture: Mouse Down
-- Execute: [hyprctl, dispatch, killactive]
+- Execute: [hyprctl, dispatch, hl.dsp.window.close()]
 ...

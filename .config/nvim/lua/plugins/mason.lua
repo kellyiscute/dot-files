@@ -23,32 +23,28 @@ local tsls_conf = {
   }
 }
 
-local dartls_conf = {
-  capabilities = capabilities,
-  cmd = { "dart", "language-server", "--lsp" },
-  filetypes = { "dart" },
-  root_markers = { "pubspec.yaml", "analysis_options.yaml", ".dartignore", ".git" },
-  init_options = {
-    closingLabels = true,
-    flutterOutline = true,
-    onlyAnalyzeProjectsWithOpenFiles = true,
-    outline = true,
-    suggestFromUnimportedLibraries = true,
-  },
-  settings = {
-    dart = {
-      completeFunctionCalls = true,
-      showTodos = true,
-    },
-  },
-  on_attach = function(client, bufnr)
-    if client.server_capabilities.documentSymbolProvider then
-      navic.attach(client, bufnr)
-    end
-  end,
-}
+-- local dartls_conf = {
+--   capabilities = capabilities,
+--   cmd = { "dart", "language-server", "--lsp" },
+--   filetypes = { "dart" },
+--   root_markers = { "pubspec.yaml", "analysis_options.yaml", ".dartignore", ".git" },
+--   init_options = {
+--     closingLabels = true,
+--     flutterOutline = true,
+--     onlyAnalyzeProjectsWithOpenFiles = true,
+--     outline = true,
+--     suggestFromUnimportedLibraries = true,
+--   },
+--   settings = {
+--     dart = {
+--       completeFunctionCalls = true,
+--       showTodos = true,
+--     },
+--   },
+-- }
 
 local yamlls_conf = {
+  capabilities = capabilities,
   settings = {
     yaml = {
       schemas = {
@@ -97,15 +93,14 @@ return {
       "basedpyright",
       "denols",
       "emmet_ls",
-      "home_assistant",
       "systemd_lsp",
+      "terraformls",
     },
   },
   init = function()
+    vim.lsp.config("*", { capabilities = capabilities })
     vim.lsp.config("ts_ls", tsls_conf)
     vim.lsp.config("yamlls", yamlls_conf)
-    vim.lsp.config("dartls", dartls_conf)
-    vim.lsp.enable("dartls")
   end,
   dependencies = {
     "neovim/nvim-lspconfig",

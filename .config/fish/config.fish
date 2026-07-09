@@ -1,3 +1,4 @@
+set -gx PATH /home/kelly/bin $PATH
 set -gx PATH $PATH /home/kelly/.cargo/bin
 set -gx PATH $PATH /opt/google-cloud-cli/bin
 if status is-interactive
@@ -83,3 +84,8 @@ alias n="nvim"
 alias svc="sudo systemctl"
 alias proxy="setProxy"
 alias noproxy="unsetProxy"
+
+# GVM (Go Version Manager)
+if test -x $HOME/bin/gvm
+    gvm env --fish | source
+end
