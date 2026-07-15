@@ -32,17 +32,23 @@ set -gx QT_QPA_PLATFORMTHEME qt5ct
 set -gx MPD_HOST "/home/kelly/.mpd/socket"
 
 function setProxy
-  set httpProxy http://192.168.10.1:7891
-  set socksProxy socks5://192.168.10.1:7891
+  set proxy $(cat ~/.config/fish/proxy)
+  if [ -z "$proxy" ]
+    set proxy "127.0.0.1:7897"
+    echo $proxy > ~/.config/fish/proxy
+  end
+
+  set httpProxy http://$proxy
+  set socksProxy socks5://$proxy
 
   set -gx ALL_PROXY $socksProxy
   set -gx SOCKS_PROXY $socksProxy
   set -gx HTTP_PROXY $httpProxy
   set -gx HTTPS_PROXY $httpProxy
 
-  hyprctl keyword env HTTPS_PROXY $httpProxy
-  hyprctl keyword env HTTP_PROXY  $httpProxy
-  hyprctl keyword env SOCKS_PROXY $socksProxy
+  hyprctl keyword env HTTPS_PROXY $httpProxy > /dev/null
+  hyprctl keyword env HTTP_PROXY  $httpProxy > /dev/null
+  hyprctl keyword env SOCKS_PROXY $socksProxy > /dev/null
 end
 
 function unsetProxy
@@ -50,9 +56,10 @@ function unsetProxy
   set -e SOCKS_PROXY
   set -e HTTP_PROXY
   set -e HTTPS_PROXY
-  hyprctl keyword env HTTPS_PROXY ""
-  hyprctl keyword env HTTP_PROXY ""
-  hyprctl keyword env SOCKS_PROXY ""
+  hyprctl keyword env HTTPS_PROXY "" > /dev/null
+  hyprctl keyword env HTTP_PROXY "" > /dev/null
+  hyprctl keyword env SOCKS_PROXY "" > /dev/null
+  echo "" > ~/.config/fish/proxy
 end
 
 function showProxy
@@ -88,4 +95,14 @@ alias noproxy="unsetProxy"
 # GVM (Go Version Manager)
 if test -x $HOME/bin/gvm
     gvm env --fish | source
+end
+
+alias commit="claude -p 'Generate a one-line commit message for the current changes with concise language using gitmoji. DO NOT STATE CO-AUTHOR.' | xargs -I _ --interactive git commit -m _"
+
+set p $(cat ~/.config/fish/proxy)
+
+if [ -z "$p" ]
+  unsetProxy
+else
+  setProxy
 end
