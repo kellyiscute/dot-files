@@ -1,3 +1,31 @@
+local kind_icons = {
+  Text = '  ',
+  Method = '  ',
+  Function = '  ',
+  Constructor = '  ',
+  Field = '  ',
+  Variable = '  ',
+  Class = '  ',
+  Interface = '  ',
+  Module = '  ',
+  Property = '  ',
+  Unit = '  ',
+  Value = '  ',
+  Enum = '  ',
+  Keyword = '  ',
+  Snippet = '  ',
+  Color = '  ',
+  File = '  ',
+  Reference = '  ',
+  Folder = '  ',
+  EnumMember = '  ',
+  Constant = '  ',
+  Struct = '  ',
+  Event = '  ',
+  Operator = '  ',
+  TypeParameter = '  ',
+}
+
 return {
 	"hrsh7th/nvim-cmp",
 	version = false,
@@ -7,7 +35,10 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-calc",
 		"petertriho/cmp-git",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 	},
 	opts = function()
 		vim.lsp.config("*", { capabilities = require("cmp_nvim_lsp").default_capabilities() })
@@ -40,11 +71,21 @@ return {
 			},
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp", priority = 2000000 },
+				{ name = "nvim_lsp_signature_help", priority = 300 },
+				{ name = "nvim_lua", priority = 200 },
 				{ name = "vsnip", priority = 100 }, -- For vsnip users.
 				{ name = "path", priority = 80 },
+				{ name = "calc" },
 			}, {
 				{ name = "buffer", priority = -10000, max_item_count = 2 },
 			}),
+			formatting = {
+        fields = { "kind", "abbr" },
+				format = function(entry, vim_item)
+					vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+					return vim_item
+				end,
+			},
 			performance = {
 				throttle = 10,
 			},
