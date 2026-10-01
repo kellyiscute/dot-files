@@ -21,6 +21,7 @@
     "cpu",
     "memory",
     "temperature",
+    "battery",
   ],
 
   "hyprland/workspaces": {
