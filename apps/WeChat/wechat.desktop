@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=WeChat
+Comment=WeChat Messenger (Firejail)
+Exec=/home/kelly/apps/WeChat/launch.sh %u
+Icon=/home/kelly/apps/WeChat/wechat.png
+Terminal=false
+Categories=Network;InstantMessaging;
+MimeType=x-scheme-handler/tencent;
+StartupWMClass=wechat

@@ -77,13 +77,18 @@ read-only ${HOME}/.fonts
 
 dbus-user filter
 dbus-user.talk org.freedesktop.Notifications
-# dbus-user.talk org.freedesktop.portal.Desktop
+# Let xdg-open use the host browser through OpenURI, without granting
+# the portal screenshot, screencast or file-chooser interfaces.
+env DE=flatpak
+dbus-user.call org.freedesktop.portal.Desktop=org.freedesktop.portal.OpenURI.OpenURI@/org/freedesktop/portal/desktop
+dbus-user.call org.freedesktop.portal.Desktop=org.freedesktop.DBus.Introspectable.Introspect@/org/freedesktop/portal/desktop
+# Electron queries the portal version before choosing integration paths.
+dbus-user.call org.freedesktop.portal.Desktop=org.freedesktop.DBus.Properties.Get@/org/freedesktop/portal/desktop
 dbus-user.talk org.freedesktop.portal.Fcitx
 dbus-user.talk org.freedesktop.portal.IBus
 dbus-user.talk org.freedesktop.ScreenSaver
 dbus-user.talk org.gnome.Mutter.IdleMonitor
 dbus-user.talk org.kde.StatusNotifierWatcher
-dbus-user.own org.fcitx.Fcitx5
 dbus-user.talk org.fcitx.Fcitx5.*
 ignore dbus-user.talk org.freedesktop.portal.Screenshot
 ignore dbus-user.talk org.gnome.Shell.Screenshot

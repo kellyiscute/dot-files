@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=QQ
+Comment=Tencent QQ Messenger
+Exec=firejail --profile=/home/kelly/.config/firejail/qq.profile --appimage /opt/QQ/QQ.AppImage --ozone-platform=x11
+Icon=/opt/QQ/qq.png
+Terminal=false
+Categories=Network;InstantMessaging;
+MimeType=x-scheme-handler/tencent;
+StartupWMClass=QQ
