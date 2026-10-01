@@ -10,16 +10,16 @@
     headset_per_zone_lighting, headset-signature-startup, headset-signature-shutdown, headset-signature-passive, logivoice-nr-state, logivoice-ng-state,
     logivoice-comp-state, logivoice-deesser-state, logivoice-depopper-state, logivoice-limiter-state, logivoice-hpf-state]
   _battery: 4100
-  _config_cookie: [182, 128]
+  _config_cookie: [100, 76]
   _dpi-sliding: 13
   _modelId: B03400000000
-  _sensitive: {change-host: false, divert-keys: false, dpi: false, hires-scroll-mode: false, hires-smooth-invert: true, hires-smooth-resolution: true, reprogrammable-keys: false,
+  _sensitive: {change-host: false, divert-keys: false, dpi: false, hires-scroll-mode: false, hires-smooth-invert: true, hires-smooth-resolution: true, reprogrammable-keys: true,
     scroll-ratchet: false, smart-shift: true, thumb-scroll-invert: true}
   _serial: BB25FEA3
   _unitId: BB25FEA3
   _wpid: B034
   change-host: null
-  divert-keys: {82: 2, 83: 0, 86: 0, 195: 2, 196: 0}
+  divert-keys: {82: 0, 83: 0, 86: 0, 195: 2, 196: 0}
   dpi: 1050
   hires-scroll-mode: false
   hires-smooth-invert: false
