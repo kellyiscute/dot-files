@@ -45,7 +45,7 @@ return {
   {
     "MunifTanjim/nui.nvim",
   },
-  {
-    "f-person/git-blame.nvim",
-  },
+  -- {
+  --   "f-person/git-blame.nvim",
+  -- },
 }

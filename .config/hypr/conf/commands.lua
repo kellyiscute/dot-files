@@ -37,6 +37,10 @@ local M = {
     next = "playerctl next",
     prev = "playerctl prev",
   },
+  swayncClient = {
+    clearLatest = "swaync-client --close-latest",
+    clearAll = "swaync-client -C",
+  },
 }
 
 return M

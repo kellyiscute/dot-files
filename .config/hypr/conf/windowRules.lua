@@ -157,6 +157,8 @@ hl.window_rule({
 	size = { 600, 400 },
 })
 
+hl.window_rule({match = {class = ".*" }, suppress_event = "maximize"})
+
 -- Blender file view
 hl.window_rule({
 	name = "Blender File View",

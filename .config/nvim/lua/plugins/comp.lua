@@ -1,29 +1,30 @@
 local kind_icons = {
-  Text = '  ',
-  Method = '  ',
-  Function = '  ',
-  Constructor = '  ',
-  Field = '  ',
-  Variable = '  ',
-  Class = '  ',
-  Interface = '  ',
-  Module = '  ',
-  Property = '  ',
-  Unit = '  ',
-  Value = '  ',
-  Enum = '  ',
-  Keyword = '  ',
-  Snippet = '  ',
-  Color = '  ',
-  File = '  ',
-  Reference = '  ',
-  Folder = '  ',
-  EnumMember = '  ',
-  Constant = '  ',
-  Struct = '  ',
-  Event = '  ',
-  Operator = '  ',
-  TypeParameter = '  ',
+	Text = "  ",
+	Method = "  ",
+	Function = "  ",
+	Constructor = "  ",
+	Field = "  ",
+	Variable = "  ",
+	Class = "  ",
+	Interface = "  ",
+	Module = "  ",
+	Property = "  ",
+	Unit = "  ",
+	Value = "  ",
+	Enum = "  ",
+	Keyword = "  ",
+	Snippet = "  ",
+	Color = "  ",
+	File = "  ",
+	Reference = "  ",
+	Folder = "  ",
+	EnumMember = "  ",
+	Constant = "  ",
+	Struct = "  ",
+	Event = "  ",
+	Operator = "  ",
+	TypeParameter = "  ",
+	Ollama = "󰙴  ", -- minuet suggestions use the provider name as their kind
 }
 
 return {
@@ -60,7 +61,15 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-c>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				-- Accept only explicitly selected items. Checks visibility via cmp's internal non-blocking
+				-- view so <CR> doesn't stall waiting on minuet's LLM request at the start of a new line.
+				["<CR>"] = cmp.mapping(function(fallback)
+					if cmp.core.view:visible() and cmp.get_selected_entry() then
+						cmp.confirm({ select = false })
+					else
+						fallback()
+					end
+				end),
 				-- ["<tab>"] = function(fallback)
 				--   return cmp.map({ "snippet_forward", "ai_nes", "ai_accept" }, fallback)()
 				-- end,
@@ -70,7 +79,12 @@ return {
 				documentation = cmp.config.window.bordered(),
 			},
 			sources = cmp.config.sources({
+				{
+					name = "lazydev",
+					group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+				},
 				{ name = "nvim_lsp", priority = 2000000 },
+				{ name = "minuet", priority = 1000 },
 				{ name = "nvim_lsp_signature_help", priority = 300 },
 				{ name = "nvim_lua", priority = 200 },
 				{ name = "vsnip", priority = 100 }, -- For vsnip users.
@@ -80,14 +94,15 @@ return {
 				{ name = "buffer", priority = -10000, max_item_count = 2 },
 			}),
 			formatting = {
-        fields = { "kind", "abbr" },
+				fields = { "kind", "abbr" },
 				format = function(entry, vim_item)
-					vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+					vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind] or "  ", vim_item.kind) -- This concatenates the icons with the name of the item kind
 					return vim_item
 				end,
 			},
 			performance = {
 				throttle = 10,
+				fetching_timeout = 2000, -- LLM sources (minuet) respond slower than LSP
 			},
 		}
 	end,

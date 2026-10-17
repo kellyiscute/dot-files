@@ -15,4 +15,5 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("mpd")
   hl.exec_cmd("mpdris2-rs")
   hl.exec_cmd("1password --silent")
+
 end)
